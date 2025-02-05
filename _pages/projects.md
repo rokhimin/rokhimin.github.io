@@ -4,7 +4,6 @@ title: Projects
 permalink: /projects/
 ---
 
-## 2019
 <a  class="list_projects">
 <a href="https://github.com/rokhimin/Atem-bot"><font color="#fff">Atem bot</font></a>
 <br><small>Bot discord & telegram for search yugioh card</small>
@@ -25,7 +24,6 @@ permalink: /projects/
 <br><small> Theme for Jekyll</small>
 </a>
 
-## 2017
 <a  class="list_projects">
 <a href="https://github.com/rokhimin/App-TebakKata"><font color="#fff">Tebak Kata</font></a>
 <br><small>App/game android like Hangarman</small>

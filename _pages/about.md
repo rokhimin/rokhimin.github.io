@@ -15,7 +15,7 @@ Technology Interest :<br>
 - Jekyll
 - Bulma
 - Tailwind
-- Artificial Intelegence
 - PostgreSql
 - Sqlite
 - Docker
+- Artificial Intelegence
