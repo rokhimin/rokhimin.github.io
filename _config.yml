@@ -1,14 +1,14 @@
 
-title: Rokhimin
-email: rokhim.whd@gmail.com
+title: whdzera
+email: whdzera@gmail.com
 description: >
-  My Private blog for diary, notes, any more.
+  My Private blog for diary, notes, and any more.
 baseurl: ""
 url: ""
 
 markdown: kramdown
 
-twitterUsername: rokhiminwahid
+twitterUsername: whdzera
 githubUsername: rokhimin
 
 themeColor: default

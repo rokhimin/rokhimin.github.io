@@ -5,23 +5,28 @@ permalink: /projects/
 ---
 
 ## 2019
-<li  class="list_projects">
-<a href="https://github.com/rokhimin/Atem-bot"><font color="#fff">[Atem] Bot discord & telegram for search yugioh card</font></a><br>
-</li>
+<a  class="list_projects">
+<a href="https://github.com/rokhimin/Atem-bot"><font color="#fff">Atem bot</font></a>
+<br><small>Bot discord & telegram for search yugioh card</small>
+</a>
 
-<li  class="list_projects">
-<a href="https://cryptocoins-bot.netlify.com"><font color="#fff">[CryptoCoins] Bot discord & telegram for check price cryptocurrency</font></a>
-</li>
+<a  class="list_projects">
+<a href="https://github.com/rokhimin/Indodax-bot"><font color="#fff">Indodax bot</font></a>
+<br><small>Bot discord & telegram for check price cryptocurrency</small>
+</a>
 
-<li  class="list_projects">
-<a href="https://github.com/rokhimin/jekyll-material-saber"><font color="#fff">[Material Saber] Theme Jekyll</font></a>
-</li>
+<a  class="list_projects">
+<a href="https://github.com/rokhimin/jekyll-material-saber"><font color="#fff">Material Saber</font></a>
+<br><small> Theme for Jekyll</small>
+</a>
 
-<li  class="list_projects">
-<a href="https://github.com/rokhimin/jekyll-darkness"><font color="#fff">[Darkness] Theme Jekyll</font></a>
-</li>
+<a  class="list_projects">
+<a href="https://github.com/rokhimin/jekyll-darkness"><font color="#fff">Darkness</font></a>
+<br><small> Theme for Jekyll</small>
+</a>
 
 ## 2017
-<li  class="list_projects">
-<a href="https://github.com/rokhimin/App-TebakKata"><font color="#fff">[Tebak Kata] App/game android like hangarman</font></a>
-</li>
+<a  class="list_projects">
+<a href="https://github.com/rokhimin/App-TebakKata"><font color="#fff">Tebak Kata</font></a>
+<br><small>App/game android like Hangarman</small>
+</a>
