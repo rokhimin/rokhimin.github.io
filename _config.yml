@@ -8,6 +8,6 @@ logo: https://i.ibb.co.com/WN2Zf64v/logo.png
 permalink: /:title.rb
 
 # Build settings
-theme: niri
+remote_theme: rokhimin/jekyll-niri
 plugins:
   - jekyll-feed
