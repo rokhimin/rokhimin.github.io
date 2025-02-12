@@ -1,22 +1,13 @@
-
 title: whdzera
 email: whdzera@gmail.com
-description: >
-  My Private blog for diary, notes, and any more.
 baseurl: ""
 url: ""
-
-markdown: kramdown
-
-twitterUsername: whdzera
-githubUsername: rokhimin
-
-themeColor: default
-fixedNav: 'true'
-
+twitter_username: rokhiminwahid
+github_username:  rokhimin
+logo: https://i.ibb.co.com/WN2Zf64v/logo.png
 permalink: /:title.rb
-markdown: kramdown
-include: [_pages]
-exclude: [_site, LICENSE, README.md]
-sass:
-  style: compressed
+
+# Build settings
+theme: niri
+plugins:
+  - jekyll-feed

@@ -3,6 +3,8 @@ layout: page
 title: About
 permalink: /about/
 ---
+<h1>About</h1>
+
 Hi.. my name is whdzera and I'm a 19 year old, programmer, and dairy free guy who's always been passionate about helping others.
 I like building new stuff and work with other people, nothing really interesting is ever built alone.
 
