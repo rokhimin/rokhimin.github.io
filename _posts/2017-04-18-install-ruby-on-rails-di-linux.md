@@ -2,9 +2,6 @@
 layout: post
 title: 'Install Ruby on Rails di Linux Ubuntu'
 date: 2017-04-18
-categories: tutorials
-tags: ruby rails
-cover: 'https://s3.gifyu.com/images/sonpnKqslhM.jpg'
 ---
 
 ## ALASAN

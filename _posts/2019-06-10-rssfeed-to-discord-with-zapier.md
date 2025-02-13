@@ -2,15 +2,13 @@
 layout: post
 title: 'RSSFeed to discord with Zapier'
 date: 2019-06-10
-categories: Tutorials
-cover: 'https://s8333.pcdn.co/wp-content/uploads/edd/2015/07/zapier-product-image.png'
-tags: automation
 ---
 
-# rssfeed>discord with zapier
-Tutorial How to make autopost bot discord from rss feed. [Alternative with Huginn](https://github.com/rokhimin/rssfeed-to-discord-with-huginn)
+# rssfeed to discord with zapier
+Tutorial How to make autopost bot discord from rss feed. 
 
 *for example, if get new feed from website anime will be post to discord
+
 [![example-rssfeed-discord-whd.md.jpg](https://s3.gifyu.com/images/example-rssfeed-discord-whd.md.jpg)](https://gifyu.com/image/EcKY)
 
 # Flow
@@ -29,6 +27,7 @@ Tutorial How to make autopost bot discord from rss feed. [Alternative with Hugin
 
 ###### Formatter Event (optional)
 - Extract URL 
+
 [![formatter1.md.jpg](https://s3.gifyu.com/images/formatter1.md.jpg)](https://gifyu.com/image/EcNW)
 
 ###### Webhooks Event
@@ -50,12 +49,12 @@ Tutorial How to make autopost bot discord from rss feed. [Alternative with Hugin
   }]
 }
 ```
+
 [![jahd8383883.md.jpg](https://s3.gifyu.com/images/jahd8383883.md.jpg)](https://gifyu.com/image/EcNa)
+
 - Headers : Content-Type | application/json
 - test your app
 
-
-Thankyou :)
 
 
 
