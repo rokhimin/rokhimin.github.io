@@ -19,7 +19,7 @@ buat app jekyll (lewat jika sudah buat)
 
 tambahkan di file gemfile (disini saya mau memakai tema [Niri](https://github.com/rokhimin/jekyll-niri), tema jekyll buatan saya :promosi hehe )
 
-```gem "niri", "~> 1.2"```
+```gem "niri", "~> 1.4"```
 
 kemudian 
 
