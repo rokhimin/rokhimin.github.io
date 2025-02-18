@@ -9,6 +9,6 @@ permalink: /:title.rb
 
 # Build settings
 remote_theme: rokhimin/jekyll-niri
-#theme: niri
+theme: niri
 plugins:
   - jekyll-feed
