@@ -6,6 +6,7 @@ twitter_username: rokhiminwahid
 github_username:  rokhimin
 logo: https://i.ibb.co.com/WN2Zf64v/logo.png
 permalink: /:title.rb
+footer: Blog [/code] by whdzera using jekyll [<a href="https://github.com/rokhimin/jekyll-niri">theme Niri</a>]
 
 # Build settings
 remote_theme: rokhimin/jekyll-niri
