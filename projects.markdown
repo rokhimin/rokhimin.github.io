@@ -3,6 +3,7 @@ layout: default
 title: Projects
 permalink: /projects/
 ---
+
 <h1>Projects</h1>
 <div class="content is-large">
     <li><a href="https://github.com/rokhimin/image-upscaler">Image Upscaler Tool</a><small> (App image upscaler tool using Canvas and Tensorflow.js)</small></li>
