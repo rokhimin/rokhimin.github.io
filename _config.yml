@@ -6,8 +6,8 @@ url: ""
 twitter_username: whdzera
 github_username: rokhimin
 logo: https://i.imgur.com/Ycqv2nu.png
-permalink: /:title.ngck
-footer: Blog [/code] by whdzera | Powered by Jekyll
+permalink: /:title.rb
+footer: [/code] by whdzera | Powered by Jekyll [/Niri]
 photo_profile: https://i.ibb.co.com/8LwzQy1j/202201141201188751.png
 disqus: rokhimin-1.disqus
 
