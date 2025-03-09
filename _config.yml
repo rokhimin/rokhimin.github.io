@@ -1,12 +1,15 @@
 title: whdzera
 email: whdzera@gmail.com
+description: we are live in Unity
 baseurl: ""
 url: ""
 twitter_username: rokhiminwahid
 github_username:  rokhimin
 logo: https://i.ibb.co.com/WN2Zf64v/logo.png
-permalink: /:title.rb
-footer: Blog [/code] by whdzera using jekyll <br> [<a href="https://github.com/rokhimin/jekyll-niri">theme Niri</a>]
+permalink: /:title.ngck
+footer: Blog [/code] by whdzera | Powered by Jekyll
+photo_profile: https://i.ibb.co.com/8LwzQy1j/202201141201188751.png
+disqus: rokhimin-1.disqus
 
 # Build settings
 remote_theme: rokhimin/jekyll-niri
