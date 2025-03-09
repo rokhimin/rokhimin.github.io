@@ -1,13 +1,7 @@
 ---
 layout: page
-title: About
 permalink: /about/
 ---
-<h1>About</h1>
-<img src="https://i.ibb.co.com/8LwzQy1j/202201141201188751.png" alt="drawing" style="width:150px;"/>
-
-
-<div class="content">
 <p>Hi.. my name is Rokhimin Wahid and I'm a 19 year old, programmer, and dairy free guy who's always been passionate about helping others.
 I like building new stuff and work with other people, nothing really interesting is ever built alone.
 </p>
@@ -28,5 +22,3 @@ Technology Interest :</p>
     <li>Docker</li>
     <li>Artificial Intelligence</li>
 </ul>
-
-</div>
