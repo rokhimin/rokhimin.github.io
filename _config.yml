@@ -1,14 +1,14 @@
 title: whdzera
 email: whdzera@gmail.com
-description: "We are live in Unity"
+description: "my blog"
 baseurl: ""  
 url: ""  
 twitter_username: whdzera
 github_username: rokhimin
 logo: "https://i.imgur.com/Ycqv2nu.png"
 permalink: "/:title.html"
-footer: "Blog [/code] by whdzera | Powered by Jekyll"
-photo_profile: "https://i.ibb.co.com/8LwzQy1j/202201141201188751.png"
+footer: "Blog [/code] by whdzera | Powered by Jekyll <a href='https://github.com/rokhimin/jekyll-niri/'Niri</a>"
+photo_profile: "https://i.imgur.com/YC1wBiK.png"
 disqus: "rokhimin-1.disqus"
 
 # Build settings
