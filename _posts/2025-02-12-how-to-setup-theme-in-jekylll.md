@@ -2,6 +2,7 @@
 layout: post
 title: 'How to setup theme in jekyll'
 date: 2025-02-12
+comments: true
 ---
 #### First
 jika belum install jekyll

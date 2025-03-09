@@ -2,6 +2,7 @@
 layout: post
 title: 'RSSFeed to discord with Huginn'
 date: 2019-06-09
+comments: true
 ---
 
 # rssfeed to discord with Huginn

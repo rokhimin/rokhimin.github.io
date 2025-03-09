@@ -2,6 +2,7 @@
 layout: post
 title: 'Review Linux Manjaro'
 date: 2025-02-10
+comments: true
 ---
 
 <!---![](https://s3.gifyu.com/images/b2eG3.png)-->

@@ -14,5 +14,6 @@ disqus: rokhimin-1.disqus
 # Build settings
 remote_theme: rokhimin/jekyll-niri
 #theme: niri
+
 plugins:
   - jekyll-feed
