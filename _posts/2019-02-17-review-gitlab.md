@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Draft'
+title: 'Review Gitlab'
 date: 2025-02-17
 categories: [Review, Git]
 comments: true
