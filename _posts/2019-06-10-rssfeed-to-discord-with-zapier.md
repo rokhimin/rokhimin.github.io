@@ -2,6 +2,7 @@
 layout: post
 title: 'RSSFeed to discord with Zapier'
 date: 2019-06-10
+categories: [Tutorial]
 comments: true
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title: 'Install Ruby on Rails di Linux Ubuntu'
 date: 2019-04-18
+categories: [Tutorial, Ruby, Rails]
 comments: true
 ---
 

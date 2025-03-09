@@ -2,6 +2,7 @@
 layout: post
 title: 'How to setup theme in jekyll'
 date: 2025-02-12
+categories: [Tutorial, Jekyll]
 comments: true
 ---
 #### First
