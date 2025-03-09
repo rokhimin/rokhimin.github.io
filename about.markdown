@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: about
 permalink: /about/
 ---
 <p>Hi.. my name is Rokhimin Wahid and I'm a 19 year old, programmer, and dairy free guy who's always been passionate about helping others.
