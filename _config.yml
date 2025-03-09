@@ -1,19 +1,19 @@
 title: whdzera
 email: whdzera@gmail.com
-description: we are live in Unity
-baseurl: ""
-url: ""
+description: "We are live in Unity"
+baseurl: ""  
+url: ""  
 twitter_username: whdzera
 github_username: rokhimin
-logo: https://i.imgur.com/Ycqv2nu.png
-permalink: /:title.rb
-footer: [/code] by whdzera | Powered by Jekyll Niri
-photo_profile: https://i.ibb.co.com/8LwzQy1j/202201141201188751.png
-disqus: rokhimin-1.disqus
+logo: "https://i.imgur.com/Ycqv2nu.png"
+permalink: "/:title.html"
+footer: "Blog [/code] by whdzera | Powered by Jekyll"
+photo_profile: "https://i.ibb.co.com/8LwzQy1j/202201141201188751.png"
+disqus: "rokhimin-1.disqus"
 
 # Build settings
-remote_theme: rokhimin/jekyll-niri
-#theme: niri
+remote_theme: "rokhimin/jekyll-niri"
+#theme: "niri"
 
 plugins:
   - jekyll-feed
