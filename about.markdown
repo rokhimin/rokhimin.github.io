@@ -2,6 +2,8 @@
 layout: about
 permalink: /about/
 ---
+<img src="/assets/img/my.png" width="100" height="100">
+
 <p>Hi.. my name is Rokhimin Wahid and I'm a 19 year old, programmer, and dairy free guy who's always been passionate about helping others.
 I like building new stuff and work with other people, nothing really interesting is ever built alone.
 </p>

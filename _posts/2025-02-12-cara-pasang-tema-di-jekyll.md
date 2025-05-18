@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 'How to setup theme in jekyll'
+title: 'Cara pasang tema di jekyll'
 date: 2025-02-12
-categories: [Tutorial, Jekyll]
+thumbnail: assets/img/jekyll.jpg
 comments: true
 ---
 #### First
@@ -10,22 +10,30 @@ jika belum install jekyll
 
 install jekyll (lewati jika sudah instal)
 
-```gem install jekyll```
+```bash
+gem install jekyll
+```
 
 
 buat app jekyll (lewat jika sudah buat)
 
-```jekyll new nama_app```
+```bash
+jekyll new nama_app
+```
 
 #### Setup Theme
 
 tambahkan di file gemfile (disini saya mau memakai tema [Niri](https://github.com/rokhimin/jekyll-niri), tema jekyll buatan saya :promosi hehe )
 
-```gem "niri", "~> 1.4"```
+```bash
+gem "niri", "~> 1.4"
+```
 
 kemudian 
 
-```bundle```
+```bash
+bundle
+```
 
 tambahkan di file _config.yml
 

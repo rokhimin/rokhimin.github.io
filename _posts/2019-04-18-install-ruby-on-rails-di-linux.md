@@ -2,7 +2,7 @@
 layout: post
 title: 'Install Ruby on Rails di Linux Ubuntu'
 date: 2019-04-18
-categories: [Tutorial, Ruby, Rails]
+thumbnail: assets/img/ror.png
 comments: true
 ---
 
@@ -18,7 +18,9 @@ jadi gak usah banyak kata, langsung aja kita mulai :
 
 -Sudah terinstal Curl 
 
-```$ sudo apt-get install curl```
+```bash
+sudo apt-get install curl
+```
 
 
 ## INSTAL RUBY DENGAN RVM  

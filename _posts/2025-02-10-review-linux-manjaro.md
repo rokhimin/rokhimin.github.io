@@ -2,7 +2,7 @@
 layout: post
 title: 'Review Linux Manjaro'
 date: 2025-02-10
-categories: [Review, Linux]
+thumbnail: assets/img/manjaro-linux.png
 comments: true
 ---
 
