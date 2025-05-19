@@ -1,17 +1,17 @@
 ---
 layout: post
-title: 'Install Ruby on Rails di Linux Ubuntu'
+title: Install Ruby on Rails di Linux Ubuntu
 date: 2019-04-18
 thumbnail: assets/img/ror.png
 comments: true
 ---
 
-## ALASAN
+### ALASAN
 mengapa ruby on rails ?  karena framework ruby on rails , MVC dan bahasa ruby sangat elegan dan enak dipandang, mungkin :) . tenang, gampang kok instal ruby dan ruby on rails di Ubuntu 
 
 jadi gak usah banyak kata, langsung aja kita mulai : 
 
-## PERSIAPAN 
+### PERSIAPAN 
 -Koneksi Internet Stabil 
 
 -Akses Root 
@@ -19,86 +19,118 @@ jadi gak usah banyak kata, langsung aja kita mulai :
 -Sudah terinstal Curl 
 
 ```bash
-sudo apt-get install curl
+$ sudo apt-get install curl
 ```
 
 
-## INSTAL RUBY DENGAN RVM  
+### INSTAL RUBY DENGAN RVM  
 rvm adalah ruby version manager . fungsinya untuk memanage versi dari ruby dan rails. 
 keuntunganya kita bisa berganti versi dari ruby dan rails dengan mudah dan gak ribet
 
-```$ \curl -L https://get.rvm.io | bash -s stable --ruby```
+```bash
+$ \curl -L https://get.rvm.io | bash -s stable --ruby
+```
 
 
 update rvm dan instal ruby, disini saya menggunakan ruby versi 2.4.0 
 
-```$ rvm get stable --autolibs=enable```  
+```bash
+$ rvm get stable --autolibs=enable
+```  
 
-```$ rvm install ruby```  
+```bash
+$ rvm install ruby
+```  
 
-```$ rvm --default use ruby-2.4.0``` 
+```bash
+$ rvm --default use ruby-2.4.0
+``` 
 
 
 cek ruby sudah terinstal 
 
-```$ ruby -v``` 
+```bash
+$ ruby -v
+``` 
 
 
 cek gem 
 
-```$ gem -v``` 
+```bash
+$ gem -v
+``` 
 
 
 update gem 
 
-```$ gem update --system``` 
+```bash
+$ gem update --system
+``` 
 
 
 set rvm global gemset dan gem yg ada 
 
-```$ rvm gemset use global``` 
+```bash
+$ rvm gemset use global
+``` 
 
-```$ gem list``` 
+```bash
+$ gem list
+``` 
 
 
 instal rails dengan ruby gems 
 
-```$ gem install rails``` 
+```bash
+$ gem install rails
+``` 
     
 cek rails sudah teinstal 
 
-```$ rails -v``` 
+```bash
+$ rails -v
+``` 
 
 selesai . kita sudah menginstal ruby dan ruby on rails :) 
 kita sudah bisa buat project atau aplikasi dengan ruby on rails 
 
 
 
-## BUAT PROJECT BARU DENGAN RUBY ON RAILS   
+### BUAT PROJECT BARU DENGAN RUBY ON RAILS   
 
 buat direktori baru 
 
-```$ mkdir project_rubyonrails``` 
+```bash
+$ mkdir project_rubyonrails
+``` 
 
 
 masuk direktori project_rubyonrails 
 
-```$ cd project_rubyonrails``` 
+```bash
+$ cd project_rubyonrails
+``` 
 
 
 buat project baru ruby on rails 
 
-```$ rails new appku``` 
+```bash
+$ rails new appku
+``` 
 
 
 masuk direktori project appku 
 
-```$ cd appku``` 
+```bash
+$ cd appku
+``` 
 
 
 test server
 
-```$ rails s``` 
+```bash
+$ rails s
+``` 
 
 
 buka browser dan ketik di address bar 

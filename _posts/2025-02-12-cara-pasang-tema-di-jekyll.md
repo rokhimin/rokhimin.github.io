@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 'Cara pasang tema di jekyll'
+title: Cara pasang tema di jekyll
 date: 2025-02-12
-thumbnail: assets/img/jekyll.jpg
+thumbnail: assets/img/jekyll.png
 comments: true
 ---
 #### First
@@ -37,17 +37,21 @@ bundle
 
 tambahkan di file _config.yml
 
-```theme: niri```
+```bash
+theme: niri
+```
 
 #### finish
 
 jalankan jekyll
 
-```bundle exec jekyll s```
+```bash
+bundle exec jekyll s
+```
 
 buka browser dan ketik di address bar 
 
-```http://localhost:4000``` 
+**http://localhost:4000**
 
 #### misc
 
@@ -55,7 +59,9 @@ tambahan : untuk menggunakan tema jekyll di github page agak berbeda, harus meng
 
 tambahkan di file _config.yml
 
-```remote_theme: rokhimin/jekyll-niri```
+```yaml
+remote_theme: rokhimin/jekyll-niri
+```
 
 #### another theme jekyll
 

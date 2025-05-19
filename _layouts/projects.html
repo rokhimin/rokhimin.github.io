@@ -1,174 +1,59 @@
 ---
 layout: default
 ---
-<h1 class="title animate__animated animate__fadeIn" style="color: var(--primary-color); font-size: 2.0rem;">Projects
-</h1>
-<div class="year-divider" id=""></div>
-<section class="section">
-    <div class="container">
-        <div class="columns is-multiline is-mobile">
-            
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-2-widescreen">
-                <div class="game-card" data-game-url="https://whdzera.site/search-yugioh-card">
-                    <div class="game-card-image-container">
-                        <img src="https://i.imgur.com/XLKkiBk.png" class="game-card-image">
-                    </div>
-                    <div class="game-card-info">
-                        <h3 class="game-card-title">Yugioh Card Search</h3>
-                        <p class="game-card-publisher">JavaScript</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-2-widescreen">
-                <div class="game-card" data-game-url="http://rokhimin.github.io/ai-chat-hub">
-                    <div class="game-card-image-container">
-                        <img src="https://i.imgur.com/bbEwQjk.png" class="game-card-image">
-                    </div>
-                    <div class="game-card-info">
-                        <h3 class="game-card-title">AI Chat Hub</h3>
-                        <p class="game-card-publisher">JavaScript</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-2-widescreen">
-                <div class="game-card" data-game-url="https://whdzera.site/cv-generator/">
-                    <div class="game-card-image-container">
-                        <img src="https://i.imgur.com/tG5mZCD.png" class="game-card-image">
-                    </div>
-                    <div class="game-card-info">
-                        <h3 class="game-card-title">CV Generator</h3>
-                        <p class="game-card-publisher">JavaScript</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-2-widescreen">
-                <div class="game-card" data-game-url="https://github.com/rokhimin/rails-danbooru-clone">
-                    <div class="game-card-image-container">
-                        <img src="https://i.imgur.com/iSN8Thc.png" class="game-card-image">
-                    </div>
-                    <div class="game-card-info">
-                        <h3 class="game-card-title">Danbooru Clone</h3>
-                        <p class="game-card-publisher">Ruby, Rails</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-2-widescreen">
-                <div class="game-card" data-game-url="https://github.com/rokhimin/Atem-bot">
-                    <div class="game-card-image-container">
-                        <img src="https://i.imgur.com/vcPNKCZ.png" class="game-card-image">
-                    </div>
-                    <div class="game-card-info">
-                        <h3 class="game-card-title">Atem Bot</h3>
-                        <p class="game-card-publisher">Ruby, Discord, Telegram</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="column is-6-mobile is-4-tablet is-3-desktop is-2-widescreen">
-                <div class="game-card" data-game-url="https://github.com/rokhimin/App-TebakKata">
-                    <div class="game-card-image-container">
-                        <img src="https://i.imgur.com/iaMl3UW.png" class="game-card-image">
-                    </div>
-                    <div class="game-card-info">
-                        <h3 class="game-card-title">Tebak Kata</h3>
-                        <p class="game-card-publisher">Java, Android Studio</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+
+<div class="text-center mb-12">
+  <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">
+    My Projects
+  </h1>
+</div>
+
+<!-- Kitsu -->
+<div class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6">
+  <a href="https://github.com/rokhimin/kitsu-manga" data-controller="thumbnail">
+    <img
+      src="../assets/img/kitsu-manga.png"
+      alt="Kitsu-manga"
+      data-thumbnail-target="image"
+      class="w-full h-48 object-cover transition duration-300 ease-in-out rounded-lg"
+    />
+  </a>
+
+  <div class="p-3">
+    <div
+      class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1"
+    >
+      <span>[Ruby on rails], [bulma]</span>
     </div>
-</section>
 
-<!-- jQuery and Custom JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        // Perbaikan navigasi dengan menggunakan data attribute
-        $('.game-card').on('click', function() {
-            // Mengambil URL dari data-game-url
-            const gameUrl = $(this).data('game-url');
-            if (gameUrl) {
-                window.location.href = gameUrl;
-            }
-        });
-    });
-</script>
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">
+      <a href="https://github.com/rokhimin/kitsu-manga">Kitsu Manga</a>
+    </h3>
+    <p>A web manga reader built with Ruby on Rails, featuring a clean interface and seamless reading experience.</p>
+  </div>
+</div>
 
-<style>
-    /* Memperbesar ukuran game card */
-    .game-card {
-        transition: all 0.3s ease;
-        position: relative;
-        border-radius: 1.2rem;
-        cursor: pointer;
-        margin-bottom: 1.5rem;
-        background-color: #f8f8f800;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        overflow: hidden;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .game-card-image-container {
-        overflow: hidden;
-        width: 100%;
-    }
-    
-    .game-card-image {
-        width: 100%;
-        aspect-ratio: 3/4;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-    
-    .game-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-    }
-    
-    .game-card:hover .game-card-image {
-        transform: scale(1.05);
-    }
-    
-    .game-card-info {
-        padding: 12px;
-        background-color: #0000002f;
-    }
-    
-    .game-card-title {
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-size: 1.1rem;
-        color: #333;
-        /* Handling long titles */
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-    
-    .game-card-publisher {
-        font-size: 0.9rem;
-        color: #666;
-    }
-    
-    /* Perbaikan untuk tampilan mobile */
-    @media screen and (max-width: 768px) {
-        .game-card-title {
-            font-size: 1rem;
-        }
-        
-        .game-card-publisher {
-            font-size: 0.8rem;
-        }
-        
-        .game-card-info {
-            padding: 10px;
-        }
-    }
-</style>
+<!-- Atem -->
+<div class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6">
+  <a href="https://atem.whdzera.my.id" data-controller="thumbnail">
+    <img
+      src="../assets/img/atem.png"
+      alt="Atem-bot"
+      data-thumbnail-target="image"
+      class="w-full h-48 object-cover transition duration-300 ease-in-out rounded-lg"
+    />
+  </a>
+
+  <div class="p-3">
+    <div
+      class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1"
+    >
+      <span>[Ruby], [discordrb], [telegram-bot-ruby], [baileys.js]</span>
+    </div>
+
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">
+      <a href="https://atem.whdzera.my.id">Atem bot</a>
+    </h3>
+    <p>A Discord, Telegram, Whatsapp Bot for Search Yu-Yi-Oh! cards.</p>
+  </div>
+</div>

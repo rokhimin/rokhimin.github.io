@@ -1,9 +1,7 @@
 title: whdzera
 email: whdzera@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Temukan berbagai tulisan menarik seputar teknologi. Blog ini dibuat sebagai ruang berbagi ide, pengalaman, dan pengetahuan yang bisa bermanfaat untuk siapa saja. Yuk, jelajahi dan temukan sesuatu yang baru di setiap postingannya!
 baseurl: ""  
 url: ""  
 twitter_username: whdzera
