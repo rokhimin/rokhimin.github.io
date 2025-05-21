@@ -8,52 +8,71 @@ layout: default
   </h1>
 </div>
 
-<!-- Kitsu -->
-<div class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6">
-  <a href="https://github.com/rokhimin/kitsu-manga" data-controller="thumbnail">
-    <img
-      src="../assets/img/kitsu-manga.png"
-      alt="Kitsu-manga"
-      data-thumbnail-target="image"
-      class="w-full h-48 object-cover transition duration-300 ease-in-out rounded-lg"
-    />
-  </a>
+<!-- Post Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:mx-24 mb-6">
+  <!-- Kitsu -->
 
-  <div class="p-3">
-    <div
-      class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1"
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <a
+      href="https://github.com/rokhimin/kitsu-manga"
+      data-controller="thumbnail"
     >
-      <span>[Ruby on rails], [bulma]</span>
-    </div>
+      <div class="w-full h-48 overflow-hidden rounded-t-lg">
+        <img
+          src="../assets/img/kitsu-manga.png"
+          alt="Kitsu-manga"
+          data-thumbnail-target="image"
+          class="w-full h-48 object-cover transition duration-300 ease-in-out rounded-lg"
+        />
+      </div>
+    </a>
 
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">
-      <a href="https://github.com/rokhimin/kitsu-manga">Kitsu Manga</a>
-    </h3>
-    <p>A web manga reader built with Ruby on Rails, featuring a clean interface and seamless reading experience.</p>
+    <div class="p-3">
+      <div
+        class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1"
+      >
+        <span>[Ruby on rails], [bulma]</span>
+      </div>
+
+      <h3
+        class="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors"
+      >
+        <a href="https://github.com/rokhimin/kitsu-manga">Kitsu Manga</a>
+      </h3>
+      <p>
+        A web manga reader built with Ruby on Rails, featuring a clean interface
+        and seamless reading experience.
+      </p>
+    </div>
   </div>
-</div>
 
-<!-- Atem -->
-<div class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6">
-  <a href="https://atem.whdzera.my.id" data-controller="thumbnail">
-    <img
-      src="../assets/img/atem.png"
-      alt="Atem-bot"
-      data-thumbnail-target="image"
-      class="w-full h-48 object-cover transition duration-300 ease-in-out rounded-lg"
-    />
-  </a>
+  <!-- Atem -->
 
-  <div class="p-3">
-    <div
-      class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1"
-    >
-      <span>[Ruby], [discordrb], [telegram-bot-ruby], [baileys.js]</span>
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <a href="https://atem.whdzera.my.id" data-controller="thumbnail">
+      <div class="w-full h-48 overflow-hidden rounded-t-lg">
+        <img
+          src="../assets/img/atem.png"
+          alt="Atem-bot"
+          data-thumbnail-target="image"
+          class="w-full h-48 object-cover transition duration-300 ease-in-out rounded-lg"
+        />
+      </div>
+    </a>
+
+    <div class="p-3">
+      <div
+        class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-1"
+      >
+        <span>[Ruby], [discordrb], [telegram-bot-ruby], [baileys.js]</span>
+      </div>
+
+      <h3
+        class="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors"
+      >
+        <a href="https://atem.whdzera.my.id">Atem bot</a>
+      </h3>
+      <p>A Discord, Telegram, Whatsapp Bot for Search Yu-Yi-Oh! cards.</p>
     </div>
-
-    <h3 class="text-2xl font-bold text-gray-800 dark:text-white hover:text-primary transition-colors">
-      <a href="https://atem.whdzera.my.id">Atem bot</a>
-    </h3>
-    <p>A Discord, Telegram, Whatsapp Bot for Search Yu-Yi-Oh! cards.</p>
   </div>
 </div>

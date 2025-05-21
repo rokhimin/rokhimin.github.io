@@ -1,0 +1,4 @@
+---
+layout: gb
+permalink: /gb/
+---

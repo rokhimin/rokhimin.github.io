@@ -6,6 +6,8 @@ baseurl: ""
 url: ""  
 twitter_username: whdzera
 github_username: rokhimin
+linkedin_username: whdzera
+youtube_username: whdzera
 logo: whdzera
 permalink: "/:title.html"
 footer: "Created with ❤ by whdzera"
