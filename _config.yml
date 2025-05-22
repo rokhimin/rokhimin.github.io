@@ -21,3 +21,6 @@ permalink: /:title.rb
 
 plugins:
   - jekyll-feed
+
+include:
+  - _pages

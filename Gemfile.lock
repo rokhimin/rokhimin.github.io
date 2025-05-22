@@ -72,7 +72,7 @@ GEM
     safe_yaml (1.0.5)
     sassc (2.4.0)
       ffi (~> 1.9)
-    tear-jekyll-theme (1.0.3)
+    tear-jekyll-theme (1.0.4)
       jekyll (>= 4.0, < 5.0)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
@@ -108,7 +108,7 @@ DEPENDENCIES
   http_parser.rb (~> 0.6.0)
   jekyll (~> 4.4.1)
   jekyll-feed (~> 0.12)
-  tear-jekyll-theme (~> 1.0.3)
+  tear-jekyll-theme (~> 1.0.4)
   tzinfo (>= 1, < 3)
   tzinfo-data
   wdm (~> 0.1)

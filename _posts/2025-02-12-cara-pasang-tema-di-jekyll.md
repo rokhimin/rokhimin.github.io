@@ -2,6 +2,7 @@
 layout: post
 title: Cara pasang tema di jekyll
 date: 2025-02-12
+author: whdzera
 thumbnail: assets/img/jekyll.png
 comments: true
 ---
