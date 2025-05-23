@@ -1,8 +1,12 @@
 ---
-layout: page
+layout: default
+title: Kitsu Manga
 permalink: /projects/kitsu
 ---
 
+<div
+  class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
+>
   <!-- Thumbnail -->
 <img
   src="../assets/img/kitsu-manga.png"
@@ -86,3 +90,26 @@ permalink: /projects/kitsu
 
  </div>
 </article>
+</div>
+
+
+<div
+  class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
+>
+<div class="p-3">
+<div id="disqus_thread"></div>
+</div>
+<script>
+var disqus_config = function () {
+    this.page.url = "https://whdzera.my.id/projects/kitsu";
+    this.page.identifier = "kitsu";
+};
+
+(function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ site.disqus }}.com/embed.js'; 
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+</div>
