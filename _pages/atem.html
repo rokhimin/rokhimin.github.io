@@ -3,27 +3,84 @@ layout: page
 permalink: /projects/atem
 ---
 
-  <!-- Thumbnail -->
+<!-- Thumbnail -->
 <img
   src="../assets/img/atem.png"
   alt="Thumbnail Atem-bot"
   class="w-full h-48 object-cover rounded-lg shadow-sm transition-transform duration-300 hover:scale-105"
 />
 
-    
 <article class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-    <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-blue-400 mb-4 animate-fade-in">
-      Atem-Bot
-    </h1>
-    
-    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
-      <i class="far fa-calendar mr-2"></i>
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
-    </div>
-    
-    <div class="h-px w-full bg-gradient-to-r from-black to-transparent dark:from-blue-400 mb-8"></div>
-    
-    <div class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200">
-      isi
-    </div>
+  <h1
+    class="text-3xl md:text-4xl font-bold text-primary dark:text-blue-400 mb-4 animate-fade-in"
+  >
+    Atem-Bot
+  </h1>
+
+  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
+    <i class="far fa-calendar mr-2"></i>
+    <time datetime="{{ page.date | date_to_xmlschema }}"
+      >{{ page.date | date: "%Y-%m-%d" }}</time
+    >
+  </div>
+
+  <div
+    class="h-px w-full bg-gradient-to-r from-black to-transparent dark:from-blue-400 mb-8"
+  ></div>
+
+  <div
+    class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200"
+  >
+    <h3>Apa Itu Atem Bot?</h3>
+    <p>
+      Atem Bot adalah bot serbaguna yang memungkinkan pengguna mencari informasi
+      kartu Yu-Gi-Oh! dengan dinamis. Bot ini bisa diakses di tiga platform:
+    </p>
+    <ul>
+      <li>Discord</li>
+      <li>Telegram</li>
+      <li>WhatsApp</li>
+    </ul>
+    <h3>Alasan membuat Bot ini?</h3>
+    <p>
+      Karena saya sangat menyukai permainan kartu Yu-Gi-Oh! dan ingin memudahkan
+      pengguna untuk mencari informasi tentang kartu-kartu tersebut. ditambah
+      waktu itu saya sedang belajar membuat bot dengan
+      discordrb (sebuah library di ruby untuk membuat bot di
+      discord).
+    </p>
+
+    <h3>Tech di Balik Atem Bot</h3>
+<p>
+  Atem Bot dibangun dengan bahasa pemrograman Ruby (70%) dan TypeScript (30%) dengan kombinasi library modern:
+</p>
+
+<ul>
+  <li>
+    <strong>Ygoprodeck</strong><br>
+    Digunakan untuk mengakses API dari Ygoprodeck, yang menyediakan informasi lengkap tentang kartu Yu-Gi-Oh! termasuk gambar, deskripsi, dan statistik.
+  </li>
+  <li>
+    <strong>Discordrb</strong><br>
+    Library ini memungkinkan integrasi fitur seperti slash command dan embed message (websocket) dengan Discord.
+  </li>
+  <li>
+    <strong>Telegram-Bot-Ruby</strong><br>
+    Untuk versi Telegram, bot menggunakan Telegram-Bot-Ruby, library yang mendukung pembuatan bot dengan fitur lengkap, termasuk handler pesan dan inline keyboard.
+  </li>
+  <li>
+    <strong>Baileys.js</strong><br>
+    Karena WhatsApp tidak menyediakan API resmi yang free untuk bot (harus verify Document di Wahtsapp Bussiness), jadi saya memanfaatkan Baileys.js (library Node) untuk membuat koneksi WhatsApp Web yang stabil dan aman.
+  </li>
+</ul>
+
+<p>
+  Dengan kombinasi teknologi ini, Atem Bot menjamin kompatibilitas dan kecepatan di semua platform.
+</p>
+
+<h3>Coba Atem Bot</h3>
+<p>
+  Kalian bisa mencoba Atem Bot di <a href=" https://atem.whdzera.my.id">atem.whdzera.my.id</a>
+</p>
+  </div>
 </article>

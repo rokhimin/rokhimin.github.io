@@ -24,6 +24,65 @@ permalink: /projects/kitsu
     <div class="h-px w-full bg-gradient-to-r from-black to-transparent dark:from-blue-400 mb-8"></div>
     
     <div class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200">
-      isi
-    </div>
+
+      <h3>Apa itu Kitsu Manga</h3>
+<p>
+  Kitsu Manga adalah website untuk membaca manga secara online yang dirancang dengan fokus pada kemudahan penggunaan dan kecepatan akses. Dengan desain semi-transparan yang modern dan navigasi intuitif. Dibuat menggunakan Ruby on Rails.
+</p>
+
+<h3>Fitur di Kitsu Manga</h3>
+<ul>
+  <li>Login/Register Auth dengan Devise</li>
+  <li>hCaptcha sebelum login/register</li>
+  <li>Role member and admin (guest bisa baca manga)</li>
+  <li>Email Confirmation Register dengan Action Mailer</li>
+  <li>UI Semi Transparent dengan Bulma</li>
+  <li>Pagination dengan Kaminari</li>
+  <li>Bookmarks Manga</li>
+</ul>
+
+<h3>Teknologi di Balik Kitsu Manga</h3>
+
+<h5>Backend:</h5>
+<ul>
+  <li>
+    <strong>Ruby on Rails</strong><br>
+    Framework Ruby on Rails dipilih karena kecepatan pengembangan dan skalabilitasnya. Rails juga mendukung integrasi gem (plugin) seperti Devise dan Kaminari dengan mudah.
+  </li>
+  <li>
+    <strong>SQLite (Default)</strong><br>
+    Untuk pengembangan dan skala kecil, SQLite menjadi pilihan ringan. Namun, database bisa diubah ke MySQL atau PostgreSQL sesuai kebutuhan produksi.
+  </li>
+</ul>
+
+<h5>Frontend:</h5>
+<ul>
+  <li>
+    <strong>Bulma CSS</strong><br>
+    Framework CSS modern yang memudahkan pembuatan antarmuka responsif.
+  </li>
+  <li>
+    <strong>Stimulus.js</strong><br>
+    Library JavaScript untuk meningkatkan interaktivitas.
+  </li>
+</ul>
+
+<h5>Layanan Pendukung:</h5>
+<ul>
+  <li>
+    <strong>Action Mailer</strong><br>
+    Mengirim email konfirmasi registrasi dan notifikasi.
+  </li>
+  <li>
+    <strong>hCaptcha</strong><br>
+    Melindungi form dari serangan bot.
+  </li>
+</ul>
+
+<h3>Demo</h3>
+<p>
+  Untuk sekarang masih belum ku deploy ke hosting, jadi hanya bisa diakses di localhost. Jika mau lihat source code nya, silakan ke <a href="https://github.com/rokhimin/kitsu-manga">GitHub</a> .
+</p>
+
+ </div>
 </article>
