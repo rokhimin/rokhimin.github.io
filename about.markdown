@@ -19,8 +19,5 @@ Technology Interest :</p>
     <li>Jekyll</li>
     <li>Bulma</li>
     <li>Tailwind</li>
-    <li>PostgreSQL</li>
-    <li>SQLite</li>
-    <li>Docker</li>
-    <li>Artificial Intelligence</li>
+    <li>Elixir</li>
 </ul>
