@@ -101,8 +101,8 @@ permalink: /projects/kitsu
 </div>
 <script>
 var disqus_config = function () {
-    this.page.url = "https://whdzera.my.id/projects/kitsu";
-    this.page.identifier = "kitsu";
+    this.page.url = "{{ site.url }}{{ page.url }}";
+    this.page.identifier = "{{ page.id | default: page.url }}";
 };
 
 (function() { 

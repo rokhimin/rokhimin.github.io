@@ -90,6 +90,12 @@ permalink: /projects/atem
 </article>
 </div>
 
+<style>
+  .dark iframe[sandbox] {
+  filter: invert(1) hue-rotate(180deg);
+  background: #1e1e1e;
+}
+</style>
 
 <div
   class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
@@ -99,8 +105,8 @@ permalink: /projects/atem
 </div>
 <script>
 var disqus_config = function () {
-    this.page.url = "https://whdzera.my.id/projects/atem";
-    this.page.identifier = "atem";
+    this.page.url = "{{ site.url }}{{ page.url }}";
+    this.page.identifier = "{{ page.id | default: page.url }}";
 };
 
 (function() { 
