@@ -11,7 +11,7 @@ youtube_username: whdzera
 logo: whdzera
 permalink: "/:title.html"
 footer: "Created with ❤ by whdzera"
-disqus: "rokhimin-1.disqus"
+disqus: "rokhimin.disqus"
 
 # Build settings
 remote_theme: "rokhimin/jekyll-tear"
