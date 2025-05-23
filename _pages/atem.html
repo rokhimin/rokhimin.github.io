@@ -104,6 +104,22 @@ permalink: /projects/atem
 <div id="disqus_thread"></div>
 </div>
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const htmlEl = document.documentElement;
+  const isDark = htmlEl.classList.contains("dark");
+
+  const observer = new MutationObserver(() => {
+    const iframe = document.querySelector("iframe[sandbox]");
+    if (iframe && isDark) {
+      iframe.style.filter = "invert(1) hue-rotate(180deg)";
+      iframe.style.background = "#1e1e1e";
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+
+
 var disqus_config = function () {
     this.page.url = "https://whdzera.my.id/projects/atem";
     this.page.identifier = "atem";
