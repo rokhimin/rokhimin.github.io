@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.4.1"
-gem "tear-jekyll-theme", "~> 1.0.4"
+gem "tear-jekyll-theme", "~> 1.0.5"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
 end

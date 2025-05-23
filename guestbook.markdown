@@ -1,0 +1,4 @@
+---
+layout: guestbook
+permalink: /guestbook/
+---
