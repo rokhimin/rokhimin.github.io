@@ -15,7 +15,7 @@ disqus: "rokhimin.disqus"
 
 # Build settings
 remote_theme: "rokhimin/jekyll-tear"
-theme: "tear-jekyll-theme"
+#theme: "tear-jekyll-theme"
 
 permalink: /blog/:title
 
