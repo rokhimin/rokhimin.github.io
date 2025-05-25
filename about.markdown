@@ -4,20 +4,22 @@ permalink: /about/
 ---
 <img src="/assets/img/my.png" width="100" height="100">
 
-<p>Hi.. my name is Rokhimin Wahid and I'm a 19 year old, programmer, and dairy free guy who's always been passionate about helping others.
-I like building new stuff and work with other people, nothing really interesting is ever built alone.
+<p>Hi.. nama saya Rokhimin Wahid, saya seorang programmer berusia 19 tahun. Saya selalu memiliki semangat untuk belajara tentang teknologi terutama web programming.
+Saya suka membuat hal-hal baru dan bekerja dengan orang lain, karena tidak ada hal menarik yang benar-benar dibangun sendirian.
 </p>
 <p>
-My working philosophies is communication and collaboration with other developers and stakeholders is the key to a successful project, Use the right tool for the job. A programming language is just a tool and Always try to learn something new.
-I consider myself advanced right now.
+Filosofi kerja saya adalah bahwa komunikasi dan kolaborasi dengan pengembang lain serta kenyamanan tim adalah kunci dari keberhasilan sebuah proyek Bahasa pemrograman hanyalah alat (Gunakan alat yang tepat untuk pekerjaan yang tepat), dan saya selalu berusaha untuk belajar hal baru.
+Saya menganggap diri saya sudah berada pada tingkat lanjutan saat ini.
 </p>
+
 <p>
 Technology Interest :</p>
 <ul>
-    <li>Ruby</li>
-    <li>Rails</li>
-    <li>Jekyll</li>
-    <li>Bulma</li>
-    <li>Tailwind</li>
-    <li>Elixir</li>
+    <li>Programming Language (Ruby, Javascript)</li>
+    <li>Backend Framework (Ruby on Rails, Sinatra, Hanami)</li>
+    <li>JS Framework (Stimulus.js)</li>
+    <li>CSS Framework (Bulma, Tailwind)</li>
+    <li>VCS Git (Github)</li>
+    <li>Container (Docker)</li>
+    <li>Generative AI (Chat-GPT, Claude)</li>
 </ul>

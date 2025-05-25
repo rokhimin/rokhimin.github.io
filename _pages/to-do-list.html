@@ -1,0 +1,163 @@
+---
+title: To Do List App
+permalink: /tools/to-do-list
+---
+
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+    />
+  </head>
+
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title has-text-centered">To-Do List</h1>
+
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <div class="box has-background-black-bis">
+              <!-- Input form -->
+              <div class="field">
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    id="taskInput"
+                    placeholder="Add a new task"
+                  ></textarea>
+                </div>
+                <div class="control mt-2">
+                  <button class="button is-link" id="addTaskBtn">
+                    <span class="icon">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                    <span>Add</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Task filters -->
+              <div class="tabs is-centered">
+                <ul>
+                  <li class="is-active" data-filter="all"><a>All</a></li>
+                  <li data-filter="active"><a>Active</a></li>
+                  <li data-filter="completed"><a>Completed</a></li>
+                </ul>
+              </div>
+
+              <!-- Task list with improved overflow handling -->
+              <div class="task-list" id="taskList">
+                <div class="no-tasks">No tasks yet</div>
+              </div>
+
+              <!-- Task controls -->
+              <div class="level is-mobile mt-4">
+                <div class="level-left">
+                  <div class="level-item">
+                    <span id="taskCount">0 tasks</span>
+                  </div>
+                </div>
+                <div class="level-right">
+                  <div class="level-item">
+                    <button
+                      class="button is-small is-danger is-light"
+                      id="clearCompletedBtn"
+                    >
+                      Clear Completed
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .task-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+      }
+      .task-item:last-child {
+        border-bottom: none;
+      }
+      .task-text {
+        flex-grow: 1;
+        margin: 0 10px;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: calc(100% - 90px);
+      }
+      .completed {
+        text-decoration: line-through;
+        color: #888;
+      }
+      .no-tasks {
+        text-align: center;
+        padding: 20px;
+        color: #888;
+      }
+      .sortable-ghost {
+        opacity: 0.5;
+        background-color: #f5f5f5;
+      }
+      .drag-handle {
+        cursor: move;
+        margin-right: 10px;
+        color: #ccc;
+        flex-shrink: 0;
+      }
+      .checkbox {
+        flex-shrink: 0;
+        margin-right: 5px;
+      }
+      .delete-btn {
+        flex-shrink: 0;
+      }
+      .task-list {
+        max-height: 50vh;
+        overflow-y: auto;
+        padding: 0 5px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .section {
+          padding: 1.5rem 1rem;
+        }
+      }
+    </style>
+    <script src="{{ site.baseurl }}/assets/js/todolist.js"></script>
+
+    <footer class="footer has-background-black-bis">
+        <div class="content has-text-centered">
+            <a href="{{ site.baseurl }}/" class="has-text-white">
+                <strong>[Home]</strong>
+            </a>
+        </div>
+    </footer>
+  </body>
+</html>
