@@ -1,0 +1,500 @@
+---
+title: Discord Webhook Sender
+permalink: /tools/discord-webhook
+---
+
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+    />
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+    />
+  </head>
+
+  <body>
+    
+<section class="section">
+    <div class="container">
+      <h1 class="title has-text-centered has-text-white mb-5">
+        <i class="fab fa-discord mr-2"></i> Discord Webhook
+      </h1>
+      
+      <div class="columns">
+        
+        <!-- Form Column -->
+        <div class="column is-7">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                <i class="fas fa-edit mr-2"></i> Webhook Configuration
+              </p>
+            </header>
+            
+            <div class="card-content">
+              <div class="tabs is-boxed">
+                <ul>
+                  <li class="is-active" data-tab="basic">
+                    <a>
+                      <span class="icon is-small"><i class="fas fa-cog"></i></span>
+                      <span>Basic</span>
+                    </a>
+                  </li>
+                  <li data-tab="embed">
+                    <a>
+                      <span class="icon is-small"><i class="fas fa-image"></i></span>
+                      <span>Embed</span>
+                    </a>
+                  </li>
+                  <li data-tab="fields">
+                    <a>
+                      <span class="icon is-small"><i class="fas fa-list"></i></span>
+                      <span>Fields</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              
+              <div id="basic-tab" class="tab-content">
+                <div class="field">
+                  <label class="label has-text-light">Webhook URL</label>
+                  <div class="control has-icons-left">
+                    <input class="input" type="text" id="webhook-url" placeholder="https://discord.com/api/webhooks/...">
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-link"></i>
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Username</label>
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" id="username" placeholder="Custom Bot Name">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-user"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Avatar URL</label>
+                      <div class="control has-icons-left">
+                        <input class="input" type="text" id="avatar_url" placeholder="https://example.com/avatar.png">
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-image"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label has-text-light">Message Content</label>
+                  <div class="control">
+                    <textarea class="textarea" id="content" placeholder="Your message here"></textarea>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="embed-tab" class="tab-content" style="display: none;">
+                <div class="field">
+                  <label class="label has-text-light">Embed Color</label>
+                  <div class="control">
+                    <input type="color" id="color" value="#5865F2" class="is-fullwidth">
+                  </div>
+                </div>
+                
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Author Name</label>
+                      <div class="control">
+                        <input class="input" type="text" id="author_name" placeholder="Author Name">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Author URL</label>
+                      <div class="control">
+                        <input class="input" type="text" id="author_url" placeholder="https://example.com">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label has-text-light">Author Icon</label>
+                  <div class="control">
+                    <input class="input" type="text" id="author_icon" placeholder="https://example.com/icon.png">
+                  </div>
+                </div>
+                
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Title</label>
+                      <div class="control">
+                        <input class="input" type="text" id="title" placeholder="Embed Title">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Title URL</label>
+                      <div class="control">
+                        <input class="input" type="text" id="url_title" placeholder="https://example.com">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label has-text-light">Description</label>
+                  <div class="control">
+                    <textarea class="textarea" id="description" placeholder="Embed description"></textarea>
+                  </div>
+                </div>
+                
+                <div class="columns">
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Image URL</label>
+                      <div class="control">
+                        <input class="input" type="text" id="image" placeholder="https://example.com/image.png">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="column">
+                    <div class="field">
+                      <label class="label has-text-light">Thumbnail URL</label>
+                      <div class="control">
+                        <input class="input" type="text" id="thumbnail" placeholder="https://example.com/thumbnail.png">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div id="fields-tab" class="tab-content" style="display: none;">
+                <div class="field">
+                  <label class="label has-text-light">Field 1</label>
+                  <div class="columns">
+                    <div class="column">
+                      <div class="control">
+                        <input class="input" type="text" id="field_name" placeholder="Field Name">
+                      </div>
+                    </div>
+                    
+                    <div class="column">
+                      <div class="control">
+                        <input class="input" type="text" id="field_value" placeholder="Field Value">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label has-text-light">Field 2</label>
+                  <div class="columns">
+                    <div class="column">
+                      <div class="control">
+                        <input class="input" type="text" id="field_name2" placeholder="Field Name">
+                      </div>
+                    </div>
+                    
+                    <div class="column">
+                      <div class="control">
+                        <input class="input" type="text" id="field_value2" placeholder="Field Value">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="field">
+                  <label class="label has-text-light">Footer</label>
+                  <div class="columns">
+                    <div class="column">
+                      <div class="control">
+                        <label class="label has-text-light">Name</label>
+                        <input class="input" type="text" id="footer" placeholder="Footer Text">
+                      </div>
+                    </div>
+                    
+                    <div class="column">
+                      <div class="control">
+                        <label class="label has-text-light">Icon url</label>
+                        <input class="input" type="text" id="icon_footer" placeholder="https://example.com/footer-icon.png">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="field mt-5">
+                <div class="control">
+                  <button class="button is-primary is-fullwidth" id="send">
+                    <i class="fas fa-paper-plane mr-2"></i> Send Webhook
+                  </button>
+                </div>
+              </div>
+              
+              <div id="result" class="mt-3"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Preview Column -->
+        <div class="column is-5">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                <i class="fas fa-eye mr-2"></i> Live Preview
+              </p>
+            </header>
+            
+            <div class="card-content">
+              <div class="preview-area">
+                <div id="preview-username">Webhook Bot</div>
+                <div id="preview-content"></div>
+                
+                <div id="preview-embed" class="embed-preview" style="display: none; border-left-color: #5865F2;">
+                  <div id="preview-author" class="embed-author" style="display: none;">
+                    <img id="preview-author-icon" src="" alt="">
+                    <a id="preview-author-link" href="#" target="_blank"></a>
+                  </div>
+                  
+                  <div id="preview-thumbnail" class="embed-thumbnail" style="display: none;">
+                    <img src="" alt="Thumbnail">
+                  </div>
+                  
+                  <div id="preview-title" class="embed-title" style="display: none;">
+                    <a href="#" target="_blank"></a>
+                  </div>
+                  
+                  <div id="preview-description" class="embed-description" style="display: none;"></div>
+                  
+                  <div id="preview-fields" class="embed-fields" style="display: none;">
+                    <div id="preview-field1" class="embed-field" style="display: none;">
+                      <div class="embed-field-name"></div>
+                      <div class="embed-field-value"></div>
+                    </div>
+                    
+                    <div id="preview-field2" class="embed-field" style="display: none;">
+                      <div class="embed-field-name"></div>
+                      <div class="embed-field-value"></div>
+                    </div>
+                  </div>
+                  
+                  <div id="preview-image" class="embed-image" style="display: none;">
+                    <img src="" alt="Image">
+                  </div>
+                  
+                  <div id="preview-footer" class="embed-footer" style="display: none;">
+                    <img id="preview-footer-icon" src="" alt="" style="display: none;">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    
+            body {
+              background-color: #202225;
+              color: var(--discord-light);
+              min-height: 100vh;
+            }
+            
+            .card {
+              border-radius: 8px;
+              background-color: var(--discord-dark);
+              box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+              margin-bottom: 1.5rem;
+            }
+            
+            .card-header {
+              background-color: var(--discord-bg);
+              border-radius: 8px 8px 0 0;
+              padding: 1rem;
+            }
+            
+            .card-header-title {
+              color: white;
+              font-weight: 600;
+            }
+            
+            .input, .textarea, select {
+              background-color: #40444b;
+              border-color: #202225;
+              color: var(--discord-light);
+              transition: all 0.3s;
+            }
+            
+            .input:focus, .textarea:focus, select:focus {
+              border-color: var(--discord-blue);
+              box-shadow: 0 0 0 1px var(--discord-blue);
+            }
+            
+            .button.is-primary {
+              background-color: var(--discord-blue);
+            }
+            
+            .button.is-primary:hover {
+              background-color: #4752c4;
+            }
+            
+            .button.is-success {
+              background-color: var(--discord-green);
+            }
+            
+            .preview-area {
+              background-color: var(--discord-bg);
+              border-radius: 8px;
+              padding: 1rem;
+            }
+            
+            .embed-preview {
+              border-left: 4px solid #ffffff;
+              padding-left: 10px;
+              margin-top: 10px;
+            }
+            
+            .embed-author {
+              display: flex;
+              align-items: center;
+              margin-bottom: 5px;
+            }
+            
+            .embed-author img {
+              width: 24px;
+              height: 24px;
+              border-radius: 50%;
+              margin-right: 5px;
+            }
+            
+            .embed-title {
+              font-weight: bold;
+              margin-bottom: 8px;
+            }
+            
+            .embed-description {
+              margin-bottom: 8px;
+            }
+            
+            .embed-fields {
+              display: flex;
+              flex-wrap: wrap;
+              margin-bottom: 8px;
+            }
+            
+            .embed-field {
+              flex: 0 0 50%;
+              padding-right: 10px;
+              margin-bottom: 8px;
+            }
+            
+            .embed-field-name {
+              font-weight: bold;
+              margin-bottom: 2px;
+            }
+            
+            .embed-footer {
+              display: flex;
+              align-items: center;
+              font-size: 0.8em;
+              color: #999;
+              margin-top: 8px;
+            }
+            
+            .embed-footer img {
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              margin-right: 5px;
+            }
+            
+            .embed-thumbnail {
+              float: right;
+              max-width: 80px;
+              max-height: 80px;
+              border-radius: 3px;
+              margin-left: 16px;
+            }
+            
+            .embed-image img {
+              max-width: 100%;
+              max-height: 300px;
+              border-radius: 3px;
+              margin-top: 8px;
+            }
+            
+            .tabs li.is-active a {
+              border-bottom-color: var(--discord-blue);
+              color: rgb(255, 255, 255);
+            }
+            
+            .tabs a {
+              color: #999;
+            }
+            
+            .tabs a:hover {
+              color: white;
+            }
+            
+            .status-success {
+              color: var(--discord-green);
+            }
+            
+            .status-error {
+              color: #ed4245;
+            }
+            
+            /* Responsive adjustments */
+            @media screen and (max-width: 768px) {
+              .columns {
+                margin-left: 0;
+                margin-right: 0;
+              }
+              
+              .embed-field {
+                flex: 0 0 100%;
+              }
+            }
+  </style>
+  <script src="{{ site.baseurl }}/assets/js/discord_webhook.js"></script>
+
+    <footer class="footer has-background-black-bis">
+        <div class="content has-text-centered">
+            <a href="{{ site.baseurl }}/" class="has-text-white">
+                <strong>[Home]</strong>
+            </a>
+        </div>
+    </footer>
+  
+</body>
+</html>

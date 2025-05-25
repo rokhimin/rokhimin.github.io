@@ -1,0 +1,186 @@
+---
+title: MBTI Personality Test
+permalink: /tools/mbti
+---
+
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+    />
+  </head>
+
+  <body>
+
+<section class="section">
+    <div class="container">
+        <div class="hero is-link">
+            <div class="hero-body">
+                <h1 class="title">Tes MBTI</h1>
+                <h2 class="subtitle">Kenali Kepribadian Anda</h2>
+            </div>
+        </div>
+
+        <div id="intro" class="content">
+            <p>Tes Myers-Briggs Type Indicator (MBTI) adalah instrumen untuk mengidentifikasi preferensi kepribadian Anda. Tes ini mengukur bagaimana Anda mengambil keputusan dan melihat dunia.</p>
+            <p>Tes ini terdiri dari 20 pertanyaan yang akan mengukur 4 dimensi:</p>
+            <ul>
+                <li><strong>Extraversion (E)</strong> vs <strong>Introversion (I)</strong>: Dari mana Anda mendapatkan energi</li>
+                <li><strong>Sensing (S)</strong> vs <strong>Intuition (N)</strong>: Bagaimana Anda memproses informasi</li>
+                <li><strong>Thinking (T)</strong> vs <strong>Feeling (F)</strong>: Bagaimana Anda membuat keputusan</li>
+                <li><strong>Judging (J)</strong> vs <strong>Perceiving (P)</strong>: Bagaimana Anda berinteraksi dengan dunia luar</li>
+            </ul>
+            <p>Jawab setiap pertanyaan dengan jujur sesuai dengan kepribadian Anda, bukan bagaimana Anda ingin dilihat oleh orang lain.</p>
+            <div class="has-text-centered">
+                <button id="startBtn" class="button is-link is-large">Mulai Tes</button>
+            </div>
+        </div>
+
+        <div id="test" class="hidden">
+            <div class="progress-container">
+                <progress id="progress" class="progress is-link" value="0" max="20"></progress>
+                <p class="has-text-centered"><span id="questionNumber">0</span> dari 20 pertanyaan</p>
+            </div>
+            
+            <div class="box">
+                <p id="question" class="is-size-5 has-text-weight-medium"></p>
+                
+                <!-- Improved answer options layout -->
+                <div class="answer-options">
+                    <label class="answer-option" id="optionALabel">
+                        <input type="radio" name="answer" value="A">
+                        <span id="optionA"></span>
+                    </label>
+                    
+                    <label class="answer-option" id="optionBLabel">
+                        <input type="radio" name="answer" value="B">
+                        <span id="optionB"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="has-text-centered" style="margin-top: 1.5rem;">
+                <button id="nextBtn" class="button is-link is-medium" disabled>Selanjutnya</button>
+            </div>
+        </div>
+
+        <div id="result" class="hidden">
+            <div class="box">
+                <div class="has-text-centered">
+                    <h3 class="title">Hasil Tes MBTI Anda</h3>
+                    <h1 id="mbtiResult" class="title is-1"></h1>
+                    <div class="columns is-centered">
+                        <div class="column is-narrow">
+                            <table class="table">
+                                <tr>
+                                    <td id="eScore"></td>
+                                    <td>Extraversion (E)</td>
+                                    <td>Introversion (I)</td>
+                                    <td id="iScore"></td>
+                                </tr>
+                                <tr>
+                                    <td id="sScore"></td>
+                                    <td>Sensing (S)</td>
+                                    <td>Intuition (N)</td>
+                                    <td id="nScore"></td>
+                                </tr>
+                                <tr>
+                                    <td id="tScore"></td>
+                                    <td>Thinking (T)</td>
+                                    <td>Feeling (F)</td>
+                                    <td id="fScore"></td>
+                                </tr>
+                                <tr>
+                                    <td id="jScore"></td>
+                                    <td>Judging (J)</td>
+                                    <td>Perceiving (P)</td>
+                                    <td id="pScore"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4 class="result-title" id="personalityTitle"></h4>
+                    <p class="result-description" id="personalityDescription"></p>
+                </div>
+                <div class="has-text-centered">
+                    <button id="retakeBtn" class="button is-link">Ambil Tes Lagi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+  
+            .hidden {
+              display: none;
+          }
+          .progress-container {
+              margin-bottom: 1.5rem;
+          }
+          .result-title {
+              font-weight: bold;
+              font-size: 1.5rem;
+              margin-bottom: 1rem;
+          }
+          .result-description {
+              margin-bottom: 1.5rem;
+          }
+          .hero {
+              margin-bottom: 2rem;
+          }
+          /* Improved answer options styling */
+          .answer-options {
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+              margin-top: 1.5rem;
+          }
+          .answer-option {
+              display: flex;
+              padding: 1rem;
+              border: 1px solid #dbdbdb;
+              border-radius: 4px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+          }
+          .answer-option:hover {
+              background-color: #f5f5f52c;
+          }
+          .answer-option.selected {
+              background-color: #f0f8ff67;
+              border-color: #3273dc;
+          }
+          .answer-option input {
+              margin-right: 1rem;
+          }
+          .answer-option span {
+              flex-grow: 1;
+          }
+</style>
+  <script src="{{ site.baseurl }}/assets/js/mbti.js"></script>
+
+    <footer class="footer has-background-black-bis">
+        <div class="content has-text-centered">
+            <a href="{{ site.baseurl }}/" class="has-text-white">
+                <strong>[Home]</strong>
+            </a>
+        </div>
+    </footer>
+  
+</body>
+</html>

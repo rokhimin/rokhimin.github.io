@@ -1,0 +1,296 @@
+---
+title: Anime Trace Tool
+permalink: /tools/anime-trace
+---
+
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+    />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+    />
+  </head>
+
+  <body>
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title is-2 has-text-centered has-text-light hero-title">Find Your Anime</h1>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          
+          <!-- Upload Section -->
+          <div class="upload-container">
+            <h3 class="title is-4 has-text-light mb-4">Upload Image</h3>
+            
+            <!-- Tabs for upload options -->
+            <div class="tabs-container">
+              <div class="tabs is-boxed">
+                <ul>
+                  <li class="is-active" id="tab-file">
+                    <a>
+                      <span class="icon is-small"><i class="fas fa-file-image"></i></span>
+                      <span>Upload File</span>
+                    </a>
+                  </li>
+                  <li id="tab-url">
+                    <a>
+                      <span class="icon is-small"><i class="fas fa-link"></i></span>
+                      <span>Image URL</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- File Upload Tab Content -->
+            <div id="content-file">
+              <div id="drop-area" class="drop-area">
+                <span class="icon is-large">
+                  <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                </span>
+                <p class="mt-2">Drag & drop your image here</p>
+                <p class="is-size-7 has-text-grey">or</p>
+                <button class="button is-info mt-2" id="browse-btn">Browse Files</button>
+                <input type="file" id="img" accept="image/*" style="display: none;">
+              </div>
+              
+              <div id="file-details" class="is-hidden">
+                <div class="is-flex is-align-items-center">
+                  <span class="icon has-text-info mr-2">
+                    <i class="fas fa-file-image"></i>
+                  </span>
+                  <span id="filename">No file selected</span>
+                  <button class="button is-small is-ghost ml-auto" id="remove-file">
+                    <span class="icon is-small">
+                      <i class="fas fa-times"></i>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- URL Tab Content -->
+            <div id="content-url" class="is-hidden">
+              <div class="input-group">
+                <input type="text" class="input" id="image-url" placeholder="Enter image URL">
+                <button class="button is-info" id="fetch-url">Fetch</button>
+              </div>
+            </div>
+            
+            <!-- Preview Section -->
+            <div id="preview-container" class="preview-container has-background-dark-ter is-hidden">
+              <div class="has-text-centered p-4">
+                <h4 class="is-size-5 mb-2">Preview</h4>
+                <div id="preview"></div>
+              </div>
+            </div>
+            
+            <!-- Search Button -->
+            <div class="has-text-centered mt-4">
+              <button class="button is-link is-medium" id="search-btn">
+                <span class="icon">
+                  <i class="fas fa-search"></i>
+                </span>
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Loading indicator -->
+          <div id="loading" class="loading-container is-hidden">
+            <div class="has-text-centered">
+              <p class="has-text-info mb-3">Searching for matching anime...</p>
+              <div class="is-flex justify-content-center">
+                <div class="pulsing-dot"></div>
+                <div class="pulsing-dot"></div>
+                <div class="pulsing-dot"></div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Results Section -->
+          <div id="results-section" class="is-hidden">
+            <h3 class="title is-4 has-text-light mt-6 mb-4">Results</h3>
+            <div id="result" class="result-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <style>
+    
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-title {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .upload-container {
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 8px;
+      background-color: #1a1a1a;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+    .preview-container {
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .preview-image {
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+    .drop-area {
+      border: 2px dashed #3273dc;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      margin-bottom: 1rem;
+    }
+    .drop-area.highlight {
+      border-color: #48c774;
+      background-color: rgba(72, 199, 116, 0.1);
+    }
+    .or-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    .or-divider::before, .or-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #4a4a4a;
+    }
+    .or-divider::before {
+      margin-right: .5em;
+    }
+    .or-divider::after {
+      margin-left: .5em;
+    }
+    .input-group {
+      display: flex;
+      margin-bottom: 1rem;
+    }
+    .input-group .input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .input-group .button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    .anime-result {
+      margin-bottom: 2rem;
+      padding:.5rem;
+      background-color: #1a1a1a;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    .anime-result:hover {
+      transform: translateY(-5px);
+    }
+    .anime-details {
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+    .similarity-tag {
+      font-size: 0.8rem;
+      margin-left: 0.5rem;
+    }
+    .high-similarity {
+      background-color: #48c774;
+    }
+    .medium-similarity {
+      background-color: #ffdd57;
+      color: #333;
+    }
+    .low-similarity {
+      background-color: #ff3860;
+    }
+    .loading-container {
+      display: flex;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+    .pulsing-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #3273dc;
+      margin: 0 5px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    .pulsing-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .pulsing-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.5; }
+    }
+    .result-container {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+    }
+    .section {
+      padding-top: 3rem;
+      flex: 1;
+    }
+    .footer {
+      background-color: #0a0a0a;
+      color: #4a4a4a;
+      padding: 1.5rem;
+      margin-top: auto;
+    }
+    .tabs-container {
+      margin-bottom: 1rem;
+    }
+    .tabs li.is-active a {
+      color: #3273dc;
+      border-color: #3273dc;
+    }
+  </style>
+  <script src="{{ site.baseurl }}/assets/js/anime_trace.js"></script>
+
+    <footer class="footer has-background-black-bis">
+        <div class="content has-text-centered">
+            <a href="{{ site.baseurl }}/" class="has-text-white">
+                <strong>[Home]</strong>
+            </a>
+        </div>
+    </footer>
+  
+</body>
+</html>

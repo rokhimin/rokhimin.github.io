@@ -1,0 +1,221 @@
+---
+title: Image Enhancer Tool
+permalink: /tools/image-enhancer
+---
+
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+    />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+    />
+  </head>
+
+  <body>
+    
+<div class="app-container">
+    
+    <div class="main-box">
+        
+    <div class="header-section">
+        <h1 class="title is-2">Photo Enhancer</h1>
+      </div>
+        <article class="message is-link">
+            <div class="message-header">
+                <p>Improves sharpness, reduces noise, optimizes brightness, and enhances details using <strong>HTML5 Canvas</strong> .</p>
+              <button class="delete" aria-label="delete"></button>
+            </div>
+          </article>
+      
+      <div id="drop-area" class="drop-area">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p class="drop-area-text">Drag & drop your image here</p>
+        <p>or</p>
+        <div class="file is-link is-centered mt-3">
+          <label class="file-label">
+            <input class="file-input" type="file" id="image-upload" accept="image/*">
+            <span class="file-cta">
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="button-container hidden" id="enhancement-controls">
+        <button class="button is-link is-medium" id="enhance-button">
+          <span class="icon">
+            <i class="fas fa-magic"></i>
+          </span>
+          <span>Enhance Photo</span>
+        </button>
+      </div>
+      
+      <div class="progress-wrapper hidden" id="progress-container">
+        <progress class="progress is-link" id="progress-bar" value="0" max="100"></progress>
+        <p class="has-text-centered" id="loading-text">Enhancing your image...</p>
+      </div>
+    </div>
+    
+    <div class="preview-container hidden" id="preview-container">
+      <div class="image-container">
+        <div class="comparison-label">
+          <span class="icon"><i class="fas fa-image"></i></span>
+          <span>Original</span>
+        </div>
+        <img id="original-image" src="" alt="Original image">
+      </div>
+      <div class="image-container">
+        <div class="comparison-label">
+          <span class="icon"><i class="fas fa-star"></i></span>
+          <span>Enhanced</span>
+        </div>
+        <img id="enhanced-image" src="" alt="Enhanced image">
+        <div class="p-3">
+          <a class="button is-info is-fullwidth" id="download-button">
+            <span class="icon">
+              <i class="fas fa-download"></i>
+            </span>
+            <span>Download Enhanced Image</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+        .app-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .image-container {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .comparison-label {
+            font-weight: bold;
+            padding: 0.75rem;
+            display: block;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .progress-wrapper {
+            margin: 1.5rem 0;
+        }
+        
+        .drop-area {
+            height: 200px;
+            border: 2px dashed #b5b5b5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .drop-area:hover {
+            border-color: #3273dc;
+        }
+        
+        .drop-area.is-active {
+            border-color: #3273dc;
+        }
+        
+        .drop-area i {
+            font-size: 3rem;
+            color: #b5b5b5;
+            margin-bottom: 1rem;
+        }
+        
+        .drop-area-text {
+            font-size: 1.2rem;
+            color: #7a7a7a;
+        }
+        
+        .header-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem 1rem;
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .header-section .title, 
+        .header-section .subtitle {
+            color: white;
+        }
+        
+        .main-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .info-message {
+            padding: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            border-left: 4px solid #3273dc;
+        }
+  </style>
+  <script src="{{ site.baseurl }}/assets/js/image_enhancer.js"></script>
+
+    <footer class="footer has-background-black-bis">
+        <div class="content has-text-centered">
+            <a href="{{ site.baseurl }}/" class="has-text-white">
+                <strong>[Home]</strong>
+            </a>
+        </div>
+    </footer>
+  
+</body>
+</html>

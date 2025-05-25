@@ -1,0 +1,421 @@
+---
+title: Background Removal Tool
+permalink: /tools/bg-remove
+---
+
+<!DOCTYPE html>
+<html class="theme-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
+    />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.19.0/tf.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+    <link
+      rel="canonical"
+      href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
+    />
+  </head>
+
+  <body>
+    
+<section class="section">
+    <div class="app-container">
+      <div class="has-text-centered">
+        <h1 class="title is-2" style="color: var(--accent-color);">Background Remover</h1>
+        <p class="subtitle">Easily remove image backgrounds with mask protection</p>
+      </div>
+      
+      <div class="canvas-container" id="editContainer">
+        <div class="placeholder-text" id="placeholderText">
+          <i class="fas fa-cloud-upload-alt upload-icon"></i>
+          <span>Drag & drop image here or click "Choose Image" above</span>
+          <label class="file-label">
+            <input class="file-input" type="file" id="imageUpload" accept="image/*">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose Image
+              </span>
+            </span>
+          </label>
+        </div>
+        <canvas id="imageCanvas" class="is-hidden"></canvas>
+        <canvas id="maskCanvas" class="is-hidden"></canvas>
+        <div class="field"></div>
+      </div>
+      
+      <div class="box">
+        <div class="file has-name is-centered is-fullwidth">
+          <span class="file-name" id="fileName">
+            No file selected
+          </span>
+        </div>
+        
+        <div class="tools is-hidden" id="toolsContainer">
+          <div class="drawing-tools">
+            <h4 class="title is-5">Mask Protection</h4>
+            <p class="help">Draw on areas you want to protect from removal</p>
+            
+            <div class="field is-grouped">
+              <div class="control">
+                <button id="enableDraw" class="button is-danger">Enable Drawing</button>
+                <button id="disableDraw" class="button is-light is-hidden">Disable Drawing</button>
+              </div>
+              <div class="control">
+                <button id="clearMask" class="button">Clear Mask</button>
+              </div>
+            </div>
+            
+            <div class="field">
+              <label class="label">Brush Size: <span id="brushSizeValue">10</span>px</label>
+              <div class="control">
+                <input type="range" id="brushSizeSlider" class="slider is-danger" min="1" max="50" value="10">
+                <div class="brush-size-preview" id="brushPreview"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="color-picker">
+            <div class="color-row">
+              <label class="label">Select Background Color:</label>
+              <input type="color" id="colorPicker" value="#00FF00" class="input">
+            </div>
+            <div class="slider-row">
+              <span class="tag is-medium is-success">Tolerance: </span>
+              <input type="range" id="toleranceSlider" class="slider is-success" min="0" max="100" value="30">
+              <span id="toleranceValue">30</span>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button id="removeBackground" class="button is-primary">Remove Background</button>
+            <button id="resetImage" class="button is-warning">Reset</button>
+            <button id="downloadImage" class="button is-info is-hidden">Download Result</button>
+          </div>
+        </div>
+        
+        <div class="preview is-hidden" id="resultContainer">
+          <h3 class="title is-4 has-text-centered">Result</h3>
+          <canvas id="resultCanvas"></canvas>
+        </div>
+        
+        <div class="debug-info" id="debugInfo"></div>
+      </div>
+      
+      <div class="notification is-info">
+        <p><strong>How to Use:</strong></p>
+        <ol>
+          <li>Upload an image by dragging & dropping or clicking "Choose Image"</li>
+          <li>Draw on areas you want to protect from removal using the mask tool</li>
+          <li>Select the background color you want to remove with the color picker</li>
+          <li>Adjust the color tolerance as needed</li>
+          <li>Click "Remove Background" to process the image</li>
+          <li>Download the resulting image with transparent background</li>
+        </ol>
+      </div>
+    </div>
+</section>
+
+  <style>
+    
+            /* Dark Theme Colors */
+        :root {
+            --bg-dark: #121212;
+            --bg-medium: #1e1e1e;
+            --bg-light: #2d2d2d;
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+            --accent-color: #8A2BE2; /* Purple accent */
+            --danger-color: #ff3860;
+            --success-color: #23d160;
+            --info-color: #3e8ed0;
+            --warning-color: #ffdd57;
+            --border-color: #444444;
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+        }
+        
+        .title, .subtitle, .label {
+            color: var(--text-primary);
+        }
+        
+        .box, .notification, .footer {
+            background-color: var(--bg-medium);
+            color: var(--text-secondary);
+        }
+        
+        .app-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .canvas-container {
+            position: relative;
+            margin: 20px 0;
+            border: 2px dashed var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+        
+        .canvas-container.dragover {
+            border-color: var(--accent-color);
+            background-color: rgba(138, 43, 226, 0.1);
+        }
+        
+        #imageCanvas, #maskCanvas, #resultCanvas {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        #maskCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .is-hidden {
+            display: none !important;
+        }
+        
+        /* Fixed color-picker for mobile */
+        .color-picker {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--bg-light);
+        }
+        
+        .color-picker .color-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .color-picker .slider-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tools {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        /* Fixed drawing-tools for mobile */
+        .drawing-tools {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--bg-light);
+        }
+        
+        .drawing-tools .field.is-grouped {
+            flex-wrap: wrap;
+        }
+        
+        .preview {
+            margin-top: 20px;
+        }
+        
+        footer {
+            padding: 20px 0;
+            text-align: center;
+            background-color: var(--bg-dark) !important;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .brush-size-preview {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--danger-color);
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        
+        .placeholder-text {
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 20px;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .canvas-loaded {
+            min-height: auto;
+        }
+        
+        /* Debug info */
+        .debug-info {
+            font-family: monospace;
+            font-size: 12px;
+            padding: 10px;
+            background-color: #000000;
+            border: 1px solid var(--border-color);
+            color: #00ff00;
+            margin-top: 10px;
+            display: none;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        /* Custom file upload styling */
+        .file-cta {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+        
+        .file-name {
+            background-color: var(--bg-light);
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+        
+        /* Button styling */
+        .button {
+            border: 1px solid var(--border-color);
+        }
+        
+        .button.is-primary {
+            background-color: var(--accent-color);
+        }
+        
+        .button.is-danger {
+            background-color: var(--danger-color);
+        }
+        
+        .button.is-info {
+            background-color: var(--info-color);
+        }
+        
+        .button.is-warning {
+            background-color: var(--warning-color);
+            color: #000;
+        }
+        
+        /* Drag & Drop icon styling */
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+        
+        input[type="range"].slider {
+            background-color: var(--bg-light);
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        input[type="range"].slider.is-danger::-webkit-slider-runnable-track {
+            background: var(--danger-color);
+        }
+        
+        input[type="range"].slider.is-success::-webkit-slider-runnable-track {
+            background: var(--success-color);
+        }
+        
+        /* Tag styling */
+        .tag {
+            background-color: var(--bg-light);
+            color: var(--text-primary);
+        }
+        
+        .tag.is-success {
+            background-color: var(--success-color);
+            color: #000;
+        }
+        
+        /* Notification styling */
+        .notification.is-info {
+            background-color: rgba(62, 142, 208, 0.2);
+            color: var(--text-primary);
+            border: 1px solid var(--info-color);
+        }
+        
+        /* Add space for action buttons on mobile */
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        /* Add animated pulse for drag area */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+        
+        .upload-icon {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        
+        /* Media queries for responsive design */
+        @media screen and (max-width: 768px) {
+            .app-container {
+            padding: 10px;
+            }
+            
+            .notification ol {
+            padding-left: 20px;
+            }
+            
+            .button {
+            height: auto;
+            white-space: normal;
+            padding: 8px 10px;
+            }
+        }
+  </style>
+  <script src="{{ site.baseurl }}/assets/js/bg_remove.js"></script>
+
+    <footer class="footer has-background-black-bis">
+        <div class="content has-text-centered">
+            <a href="{{ site.baseurl }}/" class="has-text-white">
+                <strong>[Home]</strong>
+            </a>
+        </div>
+    </footer>
+  
+</body>
+</html>
