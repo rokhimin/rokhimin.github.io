@@ -6,73 +6,72 @@ author: whdzera
 thumbnail: assets/img/jekyll.png
 comments: true
 ---
-#### First
-jika belum install jekyll
+Halo teman-teman developer!   
+Kalau kamu sedang membangun blog statis pakai Jekyll dan pengen tampil beda, kamu bisa mulai dengan mengganti **tema Jekyll-nya**. Di artikel ini, aku akan tunjukin langkah-langkah simpel buat pasang tema di Jekyll, sekaligus promosi dikit tema buatanku sendiri: **[Niri](https://github.com/rokhimin/jekyll-niri)**. 
 
-install jekyll (lewati jika sudah instal)
+---
+
+#### 1. Instalasi Jekyll (Lewati Jika Sudah)
+
+Kalau kamu belum install Jekyll, jalankan perintah ini:
 
 ```bash
 gem install jekyll
 ```
 
-
-buat app jekyll (lewat jika sudah buat)
+Lalu buat proyek Jekyll baru (atau lewati jika kamu sudah punya):
 
 ```bash
 jekyll new nama_app
 ```
 
-#### Setup Theme
+#### 2. Tambahkan Tema ke Proyek Jekyll
 
-tambahkan di file gemfile (disini saya mau memakai tema [Niri](https://github.com/rokhimin/jekyll-niri), tema jekyll buatan saya :promosi hehe )
-
+Untuk menggunakan tema Niri, edit file `Gemfile` kamu dan tambahkan:
 ```bash
 gem "niri", "~> 1.4"
 ```
 
-kemudian 
-
-```bash
+Setelah itu jalankan:
+```
 bundle
 ```
 
-tambahkan di file _config.yml
-
+Selanjutnya, buka file `_config.yml` dan tambahkan:
 ```bash
 theme: niri
 ```
 
-#### finish
+#### 3. Jalankan Proyekmu
 
-jalankan jekyll
-
+Saatnya lihat hasilnya! Jalankan Jekyll server:
 ```bash
 bundle exec jekyll s
 ```
 
-buka browser dan ketik di address bar 
+Buka browser dan arahkan ke:
 
-**http://localhost:4000**
+`http://localhost:4000`
 
-#### misc
+Voila! Tema baru kamu sudah tampil.
 
-tambahan : untuk menggunakan tema jekyll di github page agak berbeda, harus menggunakan remote repo dari github.
+#### 4. Untuk Github Pages
 
-tambahkan di file _config.yml
-
-```yaml
+Jika kamu ingin deploy ke GitHub Pages, kamu perlu menggunakan `remote_theme` karena GitHub Pages tidak mengizinkan semua gem pihak ketiga. Tambahkan ini di `_config.yml`:
+```bash
 remote_theme: rokhimin/jekyll-niri
 ```
 
-#### another theme jekyll
+#### 5. Cari Tema Jekyll Lainnya
 
-kalian bisa mencari tema lainya di 
+Kalau kamu ingin eksplorasi tema-tema lain, cek beberapa situs berikut:
 
 - [jekyllthemes.org](http://jekyllthemes.org/)
 - [jekylltheme.io](https://jekyllthemes.io/)
 - [jamstackthemes](https://jamstackthemes.dev/ssg/jekyll/)
 - Github kata kunci search 'jekyll theme'
-- dll
 
-![](https://s3.gifyu.com/images/bSMG2.png)
+| Tips: Selalu cek dokumentasi masing-masing tema untuk cara instalasi yang tepat ya!
+
+
 

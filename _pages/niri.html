@@ -1,0 +1,121 @@
+---
+layout: default
+title: Niri Theme
+permalink: /projects/niri
+---
+
+<div
+  class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
+>
+<!-- Thumbnail -->
+<img
+  src="../assets/img/niri.png"
+  alt="Thumbnail Niri Theme"
+  class="w-full h-48 object-cover rounded-lg shadow-sm transition-transform duration-300 hover:scale-105"
+/>
+
+<article class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+  <h1
+    class="text-3xl md:text-4xl font-bold text-primary dark:text-blue-400 mb-4 animate-fade-in"
+  >
+    Niri Theme
+  </h1>
+
+  <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
+    <i class="far fa-calendar mr-2"></i>
+    <time datetime="{{ page.date | date_to_xmlschema }}"
+      >{{ page.date | date: "%Y-%m-%d" }}</time
+    >
+  </div>
+
+  <div
+    class="h-px w-full bg-gradient-to-r from-black to-transparent dark:from-blue-400 mb-8"
+  ></div>
+
+  <div
+    class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200"
+  >
+   
+<p>
+Aku ingin memperkenalkan proyek tema Jekyll buatan sendiri yang aku beri nama <strong>Niri</strong>. 
+Tema ini aku buat dengan harapan bisa memberikan pengalaman blogging yang modern, minimalis, dan tetap nyaman.
+</p>
+
+<h3>Tentang Niri</h3>
+
+<p>
+<strong>Niri</strong> adalah tema blog untuk <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> 
+yang dibangun menggunakan Bulma dan Font Awesome ringan dan powerful.
+Tema ini dirancang untuk kamu yang ingin blog statis dengan tampilan bersih dan fitur-fitur kekinian.
+</p>
+
+
+<h3>Fitur Utama</h3>
+
+<p>Berikut beberapa fitur keren yang tersedia di Niri:</p>
+
+<ul>
+  <li><strong>Modern UI</strong> — Desain simpel dan minimalis, cocok untuk personal blog atau catatan dev.</li>
+  <li><strong>Dark & Light Mode</strong> — Secara default, dark mode akan aktif saat pertama kali dibuka. Tapi pengguna bisa bebas ganti ke light mode.</li>
+  <li><strong>Komentar via Disqus</strong> — Langsung siap pakai, tinggal konfigurasi username.</li>
+  <li><strong>Dukungan Logo</strong> — Bisa pakai logo personal di header blog.</li>
+  <li><strong>Halaman Projects</strong> — Punya portofolio? Bisa tampilkan proyek-proyek kamu dengan layout khusus.</li>
+  <li><strong>Mudah Diatur</strong> — Semua pengaturan cukup lewat <code>_config.yml</code>, tanpa perlu utak-atik HTML.</li>
+  <li><strong>Dan masih banyak lagi!</strong></li>
+</ul>
+
+<blockquote>
+  <strong>Repo GitHub:</strong> <a href="https://github.com/rokhimin/jekyll-niri" target="_blank">github.com/rokhimin/jekyll-niri</a>
+</blockquote>
+
+<blockquote>
+  <strong>Artikel Blog:</strong> <a href="{{ '/blog/cara-pasang-tema-di-jekyll' | relative_url }}" target="_blank">Cara pasang tema di jekyll</a>
+</blockquote>
+
+  </div>
+</article>
+</div>
+
+<style>
+  .dark iframe[sandbox] {
+  filter: invert(1) hue-rotate(180deg);
+  background: #1e1e1e;
+}
+</style>
+
+<div
+  class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
+>
+<div class="p-3">
+<div id="disqus_thread"></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const htmlEl = document.documentElement;
+  const isDark = htmlEl.classList.contains("dark");
+
+  const observer = new MutationObserver(() => {
+    const iframe = document.querySelector("iframe[sandbox]");
+    if (iframe && isDark) {
+      iframe.style.filter = "invert(1) hue-rotate(180deg)";
+      iframe.style.background = "#1e1e1e";
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+
+
+var disqus_config = function () {
+    this.page.url = "https://whdzera.my.id/projects/niri";
+    this.page.identifier = "niri";
+};
+
+(function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://{{ site.disqus }}.com/embed.js'; 
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+</div>
