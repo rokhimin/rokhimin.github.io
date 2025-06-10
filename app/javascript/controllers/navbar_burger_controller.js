@@ -1,6 +1,6 @@
 import { Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js";
 
-export default class extends Controller {
+export default class NavbarController extends Controller {
   static targets = ["menu"];
 
   toggle() {
