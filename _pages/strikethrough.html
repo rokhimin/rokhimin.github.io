@@ -16,8 +16,11 @@ permalink: /tools/strikethrough
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -25,154 +28,219 @@ permalink: /tools/strikethrough
   </head>
 
   <body>
-
-    
-<section class="hero is-medium negative-mb-5">
-    <div class="hero-body negative-mb-5">
+    <section class="hero is-medium negative-mb-5">
+      <div class="hero-body negative-mb-5">
         <div class="container has-text-centered negative-mb-5">
-            <h1 class="title is-3">Strikethrough Generator</h1>
-            <h2 class="subtitle is-8">Convert your normal text to various styled formats</h2>
+          <h1 class="title is-3">Strikethrough Generator</h1>
+          <h2 class="subtitle is-8">
+            Convert your normal text to various styled formats
+          </h2>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="section">
-    <div class="container">
+    <section class="section">
+      <div class="container">
         <div class="columns is-centered">
-            <div class="column is-10">
-                <div class="field">
-                    <label class="label">Enter your text:</label>
-                    <div class="control">
-                        <textarea class="textarea" id="inputText" placeholder="Type or paste your text here..." rows="4"></textarea>
-                    </div>
-                </div>
-
-                <div class="box">
-                    <label class="label">Choose style:</label>
-                    <div class="style-options">
-                        <div class="style-option">
-                            <input type="radio" id="style-coret" name="textStyle" value="coret" checked>
-                            <label for="style-coret">Coret <span class="style-preview preview-coret">Text</span></label>
-                        </div>
-                        <div class="style-option">
-                            <input type="radio" id="style-symbol-slash" name="textStyle" value="symbol-slash">
-                            <label for="style-symbol-slash">Simbol/slash <span class="style-preview preview-symbol-slash">Text</span></label>
-                        </div>
-                        <div class="style-option">
-                            <input type="radio" id="style-garis-bawah" name="textStyle" value="garis-bawah">
-                            <label for="style-garis-bawah">Garis bawah <span class="style-preview preview-garis-bawah">Text</span></label>
-                        </div>
-                        <div class="style-option">
-                            <input type="radio" id="style-garis-putus" name="textStyle" value="garis-putus">
-                            <label for="style-garis-putus">Garis putus-putus <span class="style-preview preview-garis-putus">Text</span></label>
-                        </div>
-                        <div class="style-option">
-                            <input type="radio" id="style-garis-ganda" name="textStyle" value="garis-ganda">
-                            <label for="style-garis-ganda">Menggarisbawahi ganda <span class="style-preview preview-menggarisbawahi-ganda">Text</span></label>
-                        </div>
-                        <div class="style-option">
-                            <input type="radio" id="style-garis-gelombang" name="textStyle" value="garis-gelombang">
-                            <label for="style-garis-gelombang">Garis gelombang <span class="style-preview preview-garis-gelombang">Text</span></label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <div class="control">
-                        <button class="button is-link is-fullwidth" id="convertBtn">Convert Text</button>
-                    </div>
-                </div>
-
-                <div class="box result-container mt-5 is-relative">
-                    <label class="label">Result:</label>
-                    <div class="result-area p-4" id="resultText"></div>
-                    <button class="button is-small is-info copy-btn" id="copyBtn">Copy</button>
-                </div>
-
+          <div class="column is-10">
+            <div class="field">
+              <label class="label">Enter your text:</label>
+              <div class="control">
+                <textarea
+                  class="textarea"
+                  id="inputText"
+                  placeholder="Type or paste your text here..."
+                  rows="4"
+                ></textarea>
+              </div>
             </div>
+
+            <div class="box">
+              <label class="label">Choose style:</label>
+              <div class="style-options">
+                <div class="style-option">
+                  <input
+                    type="radio"
+                    id="style-coret"
+                    name="textStyle"
+                    value="coret"
+                    checked
+                  />
+                  <label for="style-coret"
+                    >Coret
+                    <span class="style-preview preview-coret">Text</span></label
+                  >
+                </div>
+                <div class="style-option">
+                  <input
+                    type="radio"
+                    id="style-symbol-slash"
+                    name="textStyle"
+                    value="symbol-slash"
+                  />
+                  <label for="style-symbol-slash"
+                    >Simbol/slash
+                    <span class="style-preview preview-symbol-slash"
+                      >Text</span
+                    ></label
+                  >
+                </div>
+                <div class="style-option">
+                  <input
+                    type="radio"
+                    id="style-garis-bawah"
+                    name="textStyle"
+                    value="garis-bawah"
+                  />
+                  <label for="style-garis-bawah"
+                    >Garis bawah
+                    <span class="style-preview preview-garis-bawah"
+                      >Text</span
+                    ></label
+                  >
+                </div>
+                <div class="style-option">
+                  <input
+                    type="radio"
+                    id="style-garis-putus"
+                    name="textStyle"
+                    value="garis-putus"
+                  />
+                  <label for="style-garis-putus"
+                    >Garis putus-putus
+                    <span class="style-preview preview-garis-putus"
+                      >Text</span
+                    ></label
+                  >
+                </div>
+                <div class="style-option">
+                  <input
+                    type="radio"
+                    id="style-garis-ganda"
+                    name="textStyle"
+                    value="garis-ganda"
+                  />
+                  <label for="style-garis-ganda"
+                    >Menggarisbawahi ganda
+                    <span class="style-preview preview-menggarisbawahi-ganda"
+                      >Text</span
+                    ></label
+                  >
+                </div>
+                <div class="style-option">
+                  <input
+                    type="radio"
+                    id="style-garis-gelombang"
+                    name="textStyle"
+                    value="garis-gelombang"
+                  />
+                  <label for="style-garis-gelombang"
+                    >Garis gelombang
+                    <span class="style-preview preview-garis-gelombang"
+                      >Text</span
+                    ></label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control">
+                <button class="button is-link is-fullwidth" id="convertBtn">
+                  Convert Text
+                </button>
+              </div>
+            </div>
+
+            <div class="box result-container mt-5 is-relative">
+              <label class="label">Result:</label>
+              <div class="result-area p-4" id="resultText"></div>
+              <button class="button is-small is-info copy-btn" id="copyBtn">
+                Copy
+              </button>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
-<style>
-    
-        .result-area {
-            min-height: 100px;
-            font-size: 1.2rem;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-        }
-        .style-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .style-option {
-            flex: 1;
-            min-width: 200px;
-            padding: 10px;
-            border: 1px solid #dbdbdb;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-        }
-        .style-option:hover {
-            background-color: #f5f5f55d;
-        }
-        .style-option label {
-            margin-left: 8px;
-            flex: 1;
-            cursor: pointer;
-        }
-        .style-preview {
-            display: inline-block;
-            margin-left: 10px;
-        }
-        
-        .preview-coret {
-            text-decoration: line-through;
-        }
-        .preview-symbol-slash {
-            position: relative;
-        }
-        .preview-symbol-slash::after {
-            content: '/';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-        .preview-garis-bawah {
-            text-decoration: underline;
-        }
-        .preview-garis-putus {
-            text-decoration: underline;
-            text-decoration-style: dashed;
-        }
-        .preview-menggarisbawahi-ganda {
-            text-decoration: underline double;
-        }
-        .preview-garis-gelombang {
-            text-decoration: underline;
-            text-decoration-style: wavy;
-        }
-        .negative-mb-5 {
-        margin-bottom: -1.5rem; 
-        }
-</style>
-  <script src="{{ site.baseurl }}/assets/js/strikethrough.js"></script>
+      </div>
+    </section>
+    <style>
+      .result-area {
+        min-height: 100px;
+        font-size: 1.2rem;
+      }
+      .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+      .style-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .style-option {
+        flex: 1;
+        min-width: 200px;
+        padding: 10px;
+        border: 1px solid #dbdbdb;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+      }
+      .style-option:hover {
+        background-color: #f5f5f55d;
+      }
+      .style-option label {
+        margin-left: 8px;
+        flex: 1;
+        cursor: pointer;
+      }
+      .style-preview {
+        display: inline-block;
+        margin-left: 10px;
+      }
+
+      .preview-coret {
+        text-decoration: line-through;
+      }
+      .preview-symbol-slash {
+        position: relative;
+      }
+      .preview-symbol-slash::after {
+        content: "/";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+      }
+      .preview-garis-bawah {
+        text-decoration: underline;
+      }
+      .preview-garis-putus {
+        text-decoration: underline;
+        text-decoration-style: dashed;
+      }
+      .preview-menggarisbawahi-ganda {
+        text-decoration: underline double;
+      }
+      .preview-garis-gelombang {
+        text-decoration: underline;
+        text-decoration-style: wavy;
+      }
+      .negative-mb-5 {
+        margin-bottom: -1.5rem;
+      }
+    </style>
+    <script src="{{ site.baseurl }}/app/javascript/tools/strikethrough.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

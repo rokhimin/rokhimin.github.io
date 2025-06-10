@@ -8,108 +8,124 @@ permalink: /projects/kitsu
   class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
 >
   <!-- Thumbnail -->
-<img
-  src="../assets/img/kitsu-manga.png"
-  alt="Thumbnail Atem-bot"
-  class="w-full h-48 object-cover rounded-lg shadow-sm transition-transform duration-300 hover:scale-105"
-/>
+  <img
+    src="../app/assets/images/kitsu-manga.png"
+    alt="Thumbnail Atem-bot"
+    class="w-full h-48 object-cover rounded-lg shadow-sm transition-transform duration-300 hover:scale-105"
+  />
 
-    
-<article class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
-    <h1 class="text-3xl md:text-4xl font-bold text-primary dark:text-blue-400 mb-4 animate-fade-in">
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <h1
+      class="text-3xl md:text-4xl font-bold text-primary dark:text-blue-400 mb-4 animate-fade-in"
+    >
       Kitsu Manga
     </h1>
-    
-    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6">
+
+    <div
+      class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-6"
+    >
       <i class="far fa-calendar mr-2"></i>
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+      <time datetime="{{ page.date | date_to_xmlschema }}"
+        >{{ page.date | date: "%Y-%m-%d" }}</time
+      >
     </div>
-    
-    <div class="h-px w-full bg-gradient-to-r from-black to-transparent dark:from-blue-400 mb-8"></div>
-    
-    <div class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200">
 
+    <div
+      class="h-px w-full bg-gradient-to-r from-black to-transparent dark:from-blue-400 mb-8"
+    ></div>
+
+    <div
+      class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200"
+    >
       <h3>Apa itu Kitsu Manga</h3>
-<p>
-  Kitsu Manga adalah website untuk membaca manga secara online yang dirancang dengan fokus pada kemudahan penggunaan dan kecepatan akses. Dengan desain semi-transparan yang modern dan navigasi intuitif. Dibuat menggunakan Ruby on Rails.
-</p>
+      <p>
+        Kitsu Manga adalah website untuk membaca manga secara online yang
+        dirancang dengan fokus pada kemudahan penggunaan dan kecepatan akses.
+        Dengan desain semi-transparan yang modern dan navigasi intuitif. Dibuat
+        menggunakan Ruby on Rails.
+      </p>
 
-<h3>Fitur di Kitsu Manga</h3>
-<ul>
-  <li>Login/Register Auth dengan Devise</li>
-  <li>hCaptcha sebelum login/register</li>
-  <li>Role member and admin (guest bisa baca manga)</li>
-  <li>Email Confirmation Register dengan Action Mailer</li>
-  <li>UI Semi Transparent dengan Bulma</li>
-  <li>Pagination dengan Kaminari</li>
-  <li>Bookmarks Manga</li>
-</ul>
+      <h3>Fitur di Kitsu Manga</h3>
+      <ul>
+        <li>Login/Register Auth dengan Devise</li>
+        <li>hCaptcha sebelum login/register</li>
+        <li>Role member and admin (guest bisa baca manga)</li>
+        <li>Email Confirmation Register dengan Action Mailer</li>
+        <li>UI Semi Transparent dengan Bulma</li>
+        <li>Pagination dengan Kaminari</li>
+        <li>Bookmarks Manga</li>
+      </ul>
 
-<h3>Teknologi di Balik Kitsu Manga</h3>
+      <h3>Teknologi di Balik Kitsu Manga</h3>
 
-<h5>Backend:</h5>
-<ul>
-  <li>
-    <strong>Ruby on Rails</strong><br>
-    Framework Ruby on Rails dipilih karena kecepatan pengembangan dan skalabilitasnya. Rails juga mendukung integrasi gem (plugin) seperti Devise dan Kaminari dengan mudah.
-  </li>
-  <li>
-    <strong>SQLite (Default)</strong><br>
-    Untuk pengembangan dan skala kecil, SQLite menjadi pilihan ringan. Namun, database bisa diubah ke MySQL atau PostgreSQL sesuai kebutuhan produksi.
-  </li>
-</ul>
+      <h5>Backend:</h5>
+      <ul>
+        <li>
+          <strong>Ruby on Rails</strong><br />
+          Framework Ruby on Rails dipilih karena kecepatan pengembangan dan
+          skalabilitasnya. Rails juga mendukung integrasi gem (plugin) seperti
+          Devise dan Kaminari dengan mudah.
+        </li>
+        <li>
+          <strong>SQLite (Default)</strong><br />
+          Untuk pengembangan dan skala kecil, SQLite menjadi pilihan ringan.
+          Namun, database bisa diubah ke MySQL atau PostgreSQL sesuai kebutuhan
+          produksi.
+        </li>
+      </ul>
 
-<h5>Frontend:</h5>
-<ul>
-  <li>
-    <strong>Bulma CSS</strong><br>
-    Framework CSS modern yang memudahkan pembuatan antarmuka responsif.
-  </li>
-  <li>
-    <strong>Stimulus.js</strong><br>
-    Library JavaScript untuk meningkatkan interaktivitas.
-  </li>
-</ul>
+      <h5>Frontend:</h5>
+      <ul>
+        <li>
+          <strong>Bulma CSS</strong><br />
+          Framework CSS modern yang memudahkan pembuatan antarmuka responsif.
+        </li>
+        <li>
+          <strong>Stimulus.js</strong><br />
+          Library JavaScript untuk meningkatkan interaktivitas.
+        </li>
+      </ul>
 
-<h5>Layanan Pendukung:</h5>
-<ul>
-  <li>
-    <strong>Action Mailer</strong><br>
-    Mengirim email konfirmasi registrasi dan notifikasi.
-  </li>
-  <li>
-    <strong>hCaptcha</strong><br>
-    Melindungi form dari serangan bot.
-  </li>
-</ul>
+      <h5>Layanan Pendukung:</h5>
+      <ul>
+        <li>
+          <strong>Action Mailer</strong><br />
+          Mengirim email konfirmasi registrasi dan notifikasi.
+        </li>
+        <li>
+          <strong>hCaptcha</strong><br />
+          Melindungi form dari serangan bot.
+        </li>
+      </ul>
 
-<h3>Demo</h3>
-<p>
-  Untuk sekarang masih belum ku deploy ke hosting, jadi hanya bisa diakses di localhost. Jika mau lihat source code nya, silakan ke <a href="https://github.com/rokhimin/kitsu-manga">GitHub</a> .
-</p>
-
- </div>
-</article>
+      <h3>Demo</h3>
+      <p>
+        Untuk sekarang masih belum ku deploy ke hosting, jadi hanya bisa diakses
+        di localhost. Jika mau lihat source code nya, silakan ke
+        <a href="https://github.com/rokhimin/kitsu-manga">GitHub</a> .
+      </p>
+    </div>
+  </article>
 </div>
-
 
 <div
   class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
 >
-<div class="p-3">
-<div id="disqus_thread"></div>
-</div>
-<script>
-var disqus_config = function () {
-    this.page.url = "https://whdzera.my.id/projects/kitsu";
-    this.page.identifier = "kitsu";
-};
+  <div class="p-3">
+    <div id="disqus_thread"></div>
+  </div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://whdzera.my.id/projects/kitsu";
+      this.page.identifier = "kitsu";
+    };
 
-(function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://{{ site.disqus }}.com/embed.js'; 
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
-</script>
+    (function () {
+      var d = document,
+        s = d.createElement("script");
+      s.src = "https://{{ site.disqus }}.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
 </div>

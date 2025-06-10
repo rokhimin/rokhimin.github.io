@@ -1,6 +1,6 @@
 title: whdzera
 email: whdzera@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
+description: >- 
   Temukan berbagai tulisan menarik seputar teknologi. Blog ini dibuat sebagai ruang berbagi ide, pengalaman, dan pengetahuan yang bisa bermanfaat untuk siapa saja. Yuk, jelajahi dan temukan sesuatu yang baru di setiap postingannya!
 baseurl: ""  
 url: ""  
@@ -12,10 +12,6 @@ logo: whdzera
 permalink: "/:title.html"
 footer: "Created with ❤ by whdzera"
 disqus: "rokhimin.disqus"
-
-# Build settings
-remote_theme: "whdzera/jekyll-tear"
-#theme: "tear-jekyll-theme"
 
 permalink: /blog/:title
 

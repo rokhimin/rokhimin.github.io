@@ -16,9 +16,12 @@ permalink: /tools/totp
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/1.6.0/sha.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/1.6.0/sha.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -26,100 +29,110 @@ permalink: /tools/totp
   </head>
 
   <body>
-    
-<section class="section">
-    <div class="container">
-      <div class="notification is-info is-light">
-        <button class="delete"></button>
-        This app run on the client side, the website owner cannot see, the data stored in your browser localStorage.
-      </div>
-      
-      <!-- Form to add new account -->
-      <div class="card">
-        <div class="card-content">
-          <div class="content">
-            <div class="field">
-              <label class="label">Account name</label>
-              <div class="control">
-                <input id="account-name" class="input" type="text" placeholder="Account name">
+    <section class="section">
+      <div class="container">
+        <div class="notification is-info is-light">
+          <button class="delete"></button>
+          This app run on the client side, the website owner cannot see, the
+          data stored in your browser localStorage.
+        </div>
+
+        <!-- Form to add new account -->
+        <div class="card">
+          <div class="card-content">
+            <div class="content">
+              <div class="field">
+                <label class="label">Account name</label>
+                <div class="control">
+                  <input
+                    id="account-name"
+                    class="input"
+                    type="text"
+                    placeholder="Account name"
+                  />
+                </div>
               </div>
-            </div>
-            
-            <div class="field">
-              <label class="label">Secret key</label>
-              <div class="control">
-                <input id="secret-key" class="input" type="text" placeholder="Input Secret key (Base32)">
+
+              <div class="field">
+                <label class="label">Secret key</label>
+                <div class="control">
+                  <input
+                    id="secret-key"
+                    class="input"
+                    type="text"
+                    placeholder="Input Secret key (Base32)"
+                  />
+                </div>
               </div>
-            </div>
-            
-            <div class="field is-grouped">
-              <div class="control">
-                <button id="add-account" class="button is-link">Add</button>
-              </div>
-              <div class="control">
-                <button id="clear-data" class="button is-danger is-light">Remove all</button>
+
+              <div class="field is-grouped">
+                <div class="control">
+                  <button id="add-account" class="button is-link">Add</button>
+                </div>
+                <div class="control">
+                  <button id="clear-data" class="button is-danger is-light">
+                    Remove all
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Container for displaying tokens -->
+        <div id="tokens-container">
+          <!-- Tokens will be dynamically generated here -->
+        </div>
       </div>
-      
-      <!-- Container for displaying tokens -->
-      <div id="tokens-container">
-        <!-- Tokens will be dynamically generated here -->
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <Style>
-    
-            #loading {
-          display: none;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-size: 24px;
-          font-weight: bold;
-        }
-        #card-info {
-          display: none;
-        }
+    <style>
+      #loading {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        font-weight: bold;
+      }
+      #card-info {
+        display: none;
+      }
 
-    .token {
-      font-family: monospace;
-      font-size: 24px;
-      letter-spacing: 0.2em;
-    }
-    .progress-container {
-      margin-top: 10px;
-    }
-    .card {
-      margin-bottom: 15px;
-    }
-    .subtitle {
-      margin-bottom: 5px !important;
-    }
-    .delete-button {
-      cursor: pointer;
-    }
-    .token-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 50px;
-    }
-  </Style>
+      .token {
+        font-family: monospace;
+        font-size: 24px;
+        letter-spacing: 0.2em;
+      }
+      .progress-container {
+        margin-top: 10px;
+      }
+      .card {
+        margin-bottom: 15px;
+      }
+      .subtitle {
+        margin-bottom: 5px !important;
+      }
+      .delete-button {
+        cursor: pointer;
+      }
+      .token-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+      }
+    </style>
 
-  <script src="{{ site.baseurl }}/assets/js/totp.js"></script>
+    <script src="{{ site.baseurl }}/app/javascript/tools/totp.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

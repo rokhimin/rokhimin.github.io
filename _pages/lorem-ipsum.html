@@ -16,9 +16,15 @@ permalink: /tools/lorem-ipsum
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -26,174 +32,182 @@ permalink: /tools/lorem-ipsum
   </head>
 
   <body>
-
-<div class="container main-content">
-    <div class="columns">
+    <div class="container main-content">
+      <div class="columns">
         <div class="column is-8 is-offset-2">
-            <!-- Form Card -->
-            <div class="card form-card">
-                <div class="card-header">
-                    <div class="card-header-title">
-                        <i class="fas fa-sliders-h mr-2"></i> Lorem Ipsum Generator
+          <!-- Form Card -->
+          <div class="card form-card">
+            <div class="card-header">
+              <div class="card-header-title">
+                <i class="fas fa-sliders-h mr-2"></i> Lorem Ipsum Generator
+              </div>
+            </div>
+            <div class="card-content">
+              <form id="loripsum-form">
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label" for="number">Quantity:</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <input
+                          class="input"
+                          type="number"
+                          id="number"
+                          name="number"
+                          value="3"
+                          min="1"
+                          max="10"
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-hashtag"></i>
+                        </span>
+                      </div>
+                      <p class="help">Enter a number between 1-10</p>
                     </div>
+                  </div>
                 </div>
-                <div class="card-content">
-                    <form id="loripsum-form">
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label" for="number">Quantity:</label>
-                            </div>
-                            <div class="field-body">
-                                <div class="field">
-                                    <div class="control has-icons-left">
-                                        <input class="input" type="number" id="number" name="number" value="3" min="1" max="10">
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-hashtag"></i>
-                                        </span>
-                                    </div>
-                                    <p class="help">Enter a number between 1-10</p>
-                                </div>
-                            </div>
+
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label" for="type">Content Type:</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <div class="select is-fullwidth">
+                          <select id="type" name="type">
+                            <option value="paragraphs">Paragraphs</option>
+                            <option value="words">Words</option>
+                          </select>
                         </div>
-                  
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label" for="type">Content Type:</label>
-                            </div>
-                            <div class="field-body">
-                                <div class="field">
-                                    <div class="control has-icons-left">
-                                        <div class="select is-fullwidth">
-                                            <select id="type" name="type">
-                                                <option value="paragraphs">Paragraphs</option>
-                                                <option value="words">Words</option>
-                                            </select>
-                                        </div>
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-align-left"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                  
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal">
-                                <label class="label" for="length">Length:</label>
-                            </div>
-                            <div class="field-body">
-                                <div class="field">
-                                    <div class="control has-icons-left">
-                                        <div class="select is-fullwidth">
-                                            <select id="length" name="length">
-                                                <option value="short">Short</option>
-                                                <option value="medium" selected>Medium</option>
-                                                <option value="long">Long</option>
-                                            </select>
-                                        </div>
-                                        <span class="icon is-small is-left">
-                                            <i class="fas fa-text-height"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                  
-                        <div class="field is-horizontal">
-                            <div class="field-label is-normal"></div>
-                            <div class="field-body">
-                                <div class="field is-grouped">
-                                    <div class="control">
-                                        <button class="button is-purple" id="generate-btn">
-                                            <span class="icon">
-                                                <i class="fas fa-magic"></i>
-                                            </span>
-                                            <span>Generate Text</span>
-                                        </button>
-                                    </div>
-                                    <div class="control">
-                                        <button class="button is-light" id="copy-btn" disabled>
-                                            <span class="icon">
-                                                <i class="fas fa-copy"></i>
-                                            </span>
-                                            <span>Copy to Clipboard</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-align-left"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-            
-            <!-- Loading Indicator -->
-            <div class="loading" id="loading">
-                <progress class="progress is-medium is-purple" max="100">45%</progress>
-                <p class="has-text-centered">Generating your text...</p>
-            </div>
-            
-            <!-- Result Container -->
-            <div class="result-container box" id="loripsum-result">
-                <div class="notification is-info is-light">
-                    <i class="fas fa-info-circle mr-2"></i> Click the "Generate Text" button to create placeholder text.
+
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal">
+                    <label class="label" for="length">Length:</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control has-icons-left">
+                        <div class="select is-fullwidth">
+                          <select id="length" name="length">
+                            <option value="short">Short</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="long">Long</option>
+                          </select>
+                        </div>
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-text-height"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
+                <div class="field is-horizontal">
+                  <div class="field-label is-normal"></div>
+                  <div class="field-body">
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <button class="button is-purple" id="generate-btn">
+                          <span class="icon">
+                            <i class="fas fa-magic"></i>
+                          </span>
+                          <span>Generate Text</span>
+                        </button>
+                      </div>
+                      <div class="control">
+                        <button class="button is-light" id="copy-btn" disabled>
+                          <span class="icon">
+                            <i class="fas fa-copy"></i>
+                          </span>
+                          <span>Copy to Clipboard</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div class="loading" id="loading">
+            <progress class="progress is-medium is-purple" max="100">
+              45%
+            </progress>
+            <p class="has-text-centered">Generating your text...</p>
+          </div>
+
+          <!-- Result Container -->
+          <div class="result-container box" id="loripsum-result">
+            <div class="notification is-info is-light">
+              <i class="fas fa-info-circle mr-2"></i> Click the "Generate Text"
+              button to create placeholder text.
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-<style>
-    
-            .hero {
-              background: linear-gradient(135deg, #4a148c, #7b1fa2);
-              color: white;
-              margin-bottom: 2rem;
-          }
-          .main-content {
-              padding: 2rem;
-          }
-          .form-card {
-              box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-              border-radius: 8px;
-              overflow: hidden;
-          }
-          .result-container {
-              margin-top: 2rem;
-              transition: all 0.3s ease;
-          }
-          .result-container.has-content {
-              border-left: 4px solid #7b1fa2;
-          }
-          .is-purple {
-              background-color: #7b1fa2;
-              color: white;
-          }
-          .is-purple:hover {
-              background-color: #4a148c;
-              color: white;
-          }
-          .loading {
-              display: none;
-              text-align: center;
-              padding: 1rem;
-          }
-          .field-label {
-              text-align: left;
-          }
-          @media screen and (min-width: 769px) {
-              .field-label {
-                  text-align: right;
-              }
-          }
-</style>
-  <script src="{{ site.baseurl }}/assets/js/lorem_ipsum.js"></script>
+    <style>
+      .hero {
+        background: linear-gradient(135deg, #4a148c, #7b1fa2);
+        color: white;
+        margin-bottom: 2rem;
+      }
+      .main-content {
+        padding: 2rem;
+      }
+      .form-card {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .result-container {
+        margin-top: 2rem;
+        transition: all 0.3s ease;
+      }
+      .result-container.has-content {
+        border-left: 4px solid #7b1fa2;
+      }
+      .is-purple {
+        background-color: #7b1fa2;
+        color: white;
+      }
+      .is-purple:hover {
+        background-color: #4a148c;
+        color: white;
+      }
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 1rem;
+      }
+      .field-label {
+        text-align: left;
+      }
+      @media screen and (min-width: 769px) {
+        .field-label {
+          text-align: right;
+        }
+      }
+    </style>
+    <script src="{{ site.baseurl }}/app/javascript/tools/lorem_ipsum.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

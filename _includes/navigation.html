@@ -1,0 +1,127 @@
+<nav class="bg-white dark:bg-gray-800 shadow-md" data-controller="navbar">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex justify-between">
+      <div class="flex space-x-4">
+        <div class="flex items-center py-3">
+          <a href="/" class="font-bold text-3xl text-primary dark:text-blue-400">
+            {{ site.logo }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-1">
+        <a
+  href="{{ '/' | relative_url }}"
+  class="block rounded px-4 py-2 transition-colors duration-300 
+    {% if page.url == '/' %}
+      text-gray-900 dark:text-blue-400 font-semibold bg-gray-300 dark:bg-gray-700
+    {% else %}
+      text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700
+    {% endif %}"
+>
+  Home
+</a>
+
+<a
+  href="{{ '/projects/' | relative_url }}"
+  class="block rounded px-4 py-2 transition-colors duration-300 
+    {% if page.url == '/projects/' %}
+      text-gray-900 dark:text-blue-400 font-semibold bg-gray-300 dark:bg-gray-700
+    {% else %}
+      text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700
+    {% endif %}"
+>
+  Projects
+</a>
+
+<a
+  href="{{ '/tools/' | relative_url }}"
+  class="block rounded px-4 py-2 transition-colors duration-300 
+    {% if page.url == '/tools/' %}
+      text-gray-900 dark:text-blue-400 font-semibold bg-gray-300 dark:bg-gray-700
+    {% else %}
+      text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700
+    {% endif %}"
+>
+  Tools
+</a>
+
+<a
+  href="{{ '/about/' | relative_url }}"
+  class="block rounded px-4 py-2 transition-colors duration-300 
+    {% if page.url == '/about/' %}
+      text-gray-900 dark:text-blue-400 font-semibold bg-gray-300 dark:bg-gray-700
+    {% else %}
+      text-gray-700 dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700
+    {% endif %}"
+>
+  About
+</a>
+
+
+        <!-- Dark Mode Toggle Desktop -->
+        <button
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+          data-action="click->theme#toggle"
+        >
+          <span data-theme-target="icon" class="w-5 h-5"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation -->
+      <div class="md:hidden flex items-center">
+        <!-- Dark Mode Toggle Mobile -->
+        <button
+          class="mr-2 p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+          data-action="click->theme#toggle"
+        >
+          <span data-theme-target="icon" class="w-5 h-5"></span>
+        </button>
+
+        <!-- Burger Menu Button -->
+        <button
+          class="mobile-menu-button p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none transition-colors duration-300"
+          data-action="click->navbar#toggle"
+          aria-label="Toggle menu"
+        >
+          <!-- Hamburger Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-7 w-7 text-gray-700 dark:text-gray-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu hidden md:hidden" data-navbar-target="menu">
+
+    <a
+      class="block py-2 px-4 text-sm hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-gray-200"
+      href="{{ '/projects/' | prepend: site.baseurl }}"
+      >Projects</a
+    >
+    <a
+      class="block py-2 px-4 text-sm hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-gray-200"
+      href="{{ '/tools/' | prepend: site.baseurl }}"
+      >Tools</a
+    >
+    <a
+      class="block py-2 px-4 text-sm hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-gray-200"
+      href="{{ '/about/' | prepend: site.baseurl }}"
+      >About</a
+    >
+  </div>
+</nav>

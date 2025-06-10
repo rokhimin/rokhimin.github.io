@@ -16,10 +16,16 @@ permalink: /tools/cv-generator
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -27,497 +33,613 @@ permalink: /tools/cv-generator
   </head>
 
   <body>
-    
-<section class="section">
-    <div class="container">
+    <section class="section">
+      <div class="container">
         <h1 class="title has-text-centered">Portfolio/CV Generator</h1>
-        
-        <div class="columns">
-            <!-- Editor Panel -->
-            <div class="column is-5">
-                <div class="tabs is-boxed hidden-on-pdf">
-                    <ul>
-                        <li class="is-active" id="tab-personal"><a>Personal Info</a></li>
-                        <li id="tab-education"><a>Education</a></li>
-                        <li id="tab-experience"><a>Experience</a></li>
-                        <li id="tab-skills"><a>Skills</a></li>
-                        <li id="tab-customize"><a>Customize</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Personal Info Tab -->
-                <div id="content-personal" class="tab-content is-active">
-                    <div class="field">
-                        <label class="label">Full Name</label>
-                        <div class="control">
-                            <input class="input" type="text" id="fullName" placeholder="e.g. John Doe">
-                        </div>
-                    </div>
-                    
-                    
-                    <div class="field">
-                        <label class="label">Email</label>
-                        <div class="control">
-                            <input class="input" type="email" id="email" placeholder="e.g. john@example.com">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Phone</label>
-                        <div class="control">
-                            <input class="input" type="text" id="phone" placeholder="e.g. +62 892 2567 2890">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Address</label>
-                        <div class="control">
-                            <input class="input" type="text" id="address" placeholder="e.g. Surabaya, Indonesia">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Profile Picture</label>
-                        <div class="file has-name is-fullwidth">
-                            <label class="file-label">
-                                <input class="file-input" type="file" id="fileUpload" accept="image/*">
-                                <span class="file-cta">
-                                    <span class="file-icon">
-                                        <i class="fas fa-upload"></i>
-                                    </span>
-                                    <span class="file-label">
-                                        Choose a file…
-                                    </span>
-                                </span>
-                                <span class="file-name" id="fileName">
-                                    No file selected
-                                </span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">About Me</label>
-                        <div class="control">
-                            <textarea class="textarea" id="aboutMe" placeholder="Write a short bio about yourself"></textarea>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Education Tab -->
-                <div id="content-education" class="tab-content">
-                    <div id="educationList">
-                        <!-- Education items will be added here -->
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">School/University</label>
-                        <div class="control">
-                            <input class="input" type="text" id="schoolName" placeholder="e.g. Harvard University">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Degree</label>
-                        <div class="control">
-                            <input class="input" type="text" id="degree" placeholder="e.g. Bachelor of Science in Computer Science">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Years</label>
-                        <div class="control">
-                            <input class="input" type="text" id="eduYears" placeholder="e.g. 2018 - 2022">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Description</label>
-                        <div class="control">
-                            <textarea class="textarea" id="eduDescription" placeholder="Describe your education, achievements, etc."></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <div class="control">
-                            <button class="button" id="addEducation">Add Education</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Experience Tab -->
-                <div id="content-experience" class="tab-content">
-                    <div id="experienceList">
-                        <!-- Experience items will be added here -->
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Company</label>
-                        <div class="control">
-                            <input class="input" type="text" id="companyName" placeholder="e.g. Google">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Position</label>
-                        <div class="control">
-                            <input class="input" type="text" id="position" placeholder="e.g. Senior Developer">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Years</label>
-                        <div class="control">
-                            <input class="input" type="text" id="expYears" placeholder="e.g. 2022 - Present">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Description</label>
-                        <div class="control">
-                            <textarea class="textarea" id="expDescription" placeholder="Describe your responsibilities and achievements"></textarea>
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <div class="control">
-                            <button class="button" id="addExperience">Add Experience</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Skills Tab -->
-                <div id="content-skills" class="tab-content">
-                    <div class="field">
-                        <label class="label">Your Skills</label>
-                        <div class="control">
-                            <input class="input" type="text" id="skillInput" placeholder="e.g. JavaScript">
-                        </div>
-                        <p class="help">Press Enter to add a skill, or use the button below</p>
-                    </div>
-                    
-                    <div class="field">
-                        <div class="control">
-                            <button class="button" id="addSkill">Add Skill</button>
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Current Skills</label>
-                        <div class="tags" id="skillsList">
-                            <!-- Skills will be added here -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Customize Tab -->
-                <div id="content-customize" class="tab-content">
-                    <div class="field">
-                        <label class="label">Choose Template</label>
-                        <div class="columns is-multiline">
-                            <div class="column is-4">
-                                <div class="template-option has-background-info" data-template="modern">
-                                    <img src="" alt="Modern Template">
-                                </div>
-                            </div>
-                            <div class="column is-4">
-                                <div class="template-option has-background-primary" data-template="classic">
-                                    <img src="" alt="Classic Template">
-                                </div>
-                            </div>
-                            <div class="column is-4">
-                                <div class="template-option has-background-danger" data-template="minimalist">
-                                    <img src="" alt="Minimalist Template">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Primary Color</label>
-                        <div class="control">
-                            <input class="input" type="color" id="primaryColor" value="#3273dc">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Background Color</label>
-                        <div class="control">
-                            <input class="input" type="color" id="backgroundColor" value="#ffffff">
-                        </div>
-                    </div>
-                    
-                    <div class="field">
-                        <label class="label">Text Color</label>
-                        <div class="control">
-                            <input class="input" type="color" id="textColor" value="#4a4a4a">
-                        </div>
-                    </div>
-                </div>
-                
-                <br>
-                <div class="field is-grouped hidden-on-pdf">
-                    <div class="control">
-                        <button class="button" id="downloadPDF">Download PDF</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Preview Panel -->
-            <div class="column is-12-mobile is-12-tablet is-7-desktop">
-                <div class="box">
-                    <h2 class="subtitle">Live Preview</h2>
-                    <div class="preview-container" id="previewContainer">
-                        <div id="portfolioPreview" class="modern-template">
-                            <!-- Preview content will be rendered here -->
-                            <div class="profile-section" style="background-color: #3273dc; color: white;">
-                                <div class="profile-pic-container">
-                                    <img id="profilePreview" src="" alt="Profile Picture">
-                                </div>
-                                <h1 id="previewName" class="title is-3" style="color: white;">Your Name</h1>
-                                <div class="contact-info">
-                                    <p id="previewEmail"><i class="fas fa-envelope"></i> email@example.com</p>
-                                    <p id="previewPhone"><i class="fas fa-phone"></i> +62 890 456 7890</p>
-                                    <p id="previewAddress"><i class="fas fa-map-marker-alt"></i> City, Country</p>
-                                </div>
-                            </div>
-                            
-                            <div class="content-section">
-                                <div class="about-section">
-                                    <h3 class="section-title">About Me</h3>
-                                    <p id="previewAbout">Write something about yourself here...</p>
-                                </div>
-                                
-                                <div class="education-section">
-                                    <h3 class="section-title">Education</h3>
-                                    <div id="previewEducation">
-                                        <!-- Education entries will be inserted here -->
-                                        <p class="has-text-grey">No education added yet.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="experience-section">
-                                    <h3 class="section-title">Experience</h3>
-                                    <div id="previewExperience">
-                                        <!-- Experience entries will be inserted here -->
-                                        <p class="has-text-grey">No experience added yet.</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="skills-section">
-                                    <h3 class="section-title">Skills</h3>
-                                    <div id="previewSkills">
-                                        <!-- Skills will be inserted here -->
-                                        <p class="has-text-grey">No skills added yet.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<style>
-  
-            .preview-container {
-              border: 1px solid #ddd;
-              min-height: 600px;
-              padding: 20px;
-              margin-bottom: 20px;
-          }
-          .tab-content {
-              display: none;
-          }
-          .tab-content.is-active {
-              display: block;
-          }
-          .preview-section {
-              padding: 20px;
-          }
-          .profile-pic-container {
-              text-align: center;
-              margin-bottom: 15px;
-          }
-          #profilePreview {
-              width: 150px;
-              height: 150px;
-              border-radius: 50%;
-              object-fit: cover;
-              border: 3px solid #3273dc;
-          }
-          .template-option {
-              cursor: pointer;
-              border: 2px solid #ddd;
-              border-radius: 5px;
-              padding: 10px;
-              margin-bottom: 10px;
-              transition: all 0.3s;
-          }
-          .template-option:hover, .template-option.selected {
-              border-color: #3273dc;
-              background-color: #f5f5f5;
-          }
-          .template-option img {
-              width: 100%;
-              height: auto;
-              border-radius: 3px;
-          }
-          /* Template styles */
-          /* Modern template */
-          .modern-template {
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          }
-          .modern-template .profile-section {
-              text-align: center;
-              padding: 30px 0;
-          }
-          .modern-template .content-section {
-              padding: 20px;
-          }
-          .modern-template .section-title {
-              font-size: 1.5rem;
-              margin-bottom: 15px;
-              border-bottom: 2px solid;
-              padding-bottom: 5px;
-          }
-          .modern-template .skill-tag {
-              display: inline-block;
-              padding: 5px 10px;
-              margin: 5px;
-              border-radius: 15px;
-              font-size: 0.9rem;
-          }
-          
-          /* Classic template */
-          .classic-template {
-              font-family: 'Times New Roman', Times, serif;
-          }
-          .classic-template .header {
-              text-align: center;
-              padding: 20px 0;
-              border-bottom: 1px solid #333;
-          }
-          .classic-template .profile-pic-container {
-              float: right;
-              margin: 0 0 15px 15px;
-          }
-          .classic-template .section-title {
-              font-size: 1.3rem;
-              margin: 20px 0 10px 0;
-              border-bottom: 1px solid #333;
-          }
-          .classic-template .content-section {
-              clear: both;
-          }
-          
-          /* Minimalist template */
-          .minimalist-template {
-              font-family: Arial, sans-serif;
-          }
-          .minimalist-template .header {
-              display: flex;
-              align-items: center;
-              padding: 20px;
-          }
-          .minimalist-template .profile-info {
-              margin-left: 20px;
-          }
-          .minimalist-template .section-title {
-              text-transform: uppercase;
-              letter-spacing: 2px;
-              font-size: 1rem;
-              margin: 25px 0 15px 0;
-          }
-          .minimalist-template .skill-tag {
-              display: inline-block;
-              margin-right: 10px;
-              font-size: 0.9rem;
-          }
-          #fileUpload {
-              display: none;
-          }
-          .hidden-on-pdf {
-              display: block;
-          }
-          @media print {
-              .hidden-on-pdf {
-                  display: none !important;
-              }
-          }
-          @media screen and (max-width: 768px) {
+        <div class="columns">
+          <!-- Editor Panel -->
+          <div class="column is-5">
+            <div class="tabs is-boxed hidden-on-pdf">
+              <ul>
+                <li class="is-active" id="tab-personal">
+                  <a>Personal Info</a>
+                </li>
+                <li id="tab-education"><a>Education</a></li>
+                <li id="tab-experience"><a>Experience</a></li>
+                <li id="tab-skills"><a>Skills</a></li>
+                <li id="tab-customize"><a>Customize</a></li>
+              </ul>
+            </div>
+
+            <!-- Personal Info Tab -->
+            <div id="content-personal" class="tab-content is-active">
+              <div class="field">
+                <label class="label">Full Name</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="fullName"
+                    placeholder="e.g. John Doe"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="email"
+                    id="email"
+                    placeholder="e.g. john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Phone</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="phone"
+                    placeholder="e.g. +62 892 2567 2890"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Address</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="address"
+                    placeholder="e.g. Surabaya, Indonesia"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Profile Picture</label>
+                <div class="file has-name is-fullwidth">
+                  <label class="file-label">
+                    <input
+                      class="file-input"
+                      type="file"
+                      id="fileUpload"
+                      accept="image/*"
+                    />
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-upload"></i>
+                      </span>
+                      <span class="file-label"> Choose a file… </span>
+                    </span>
+                    <span class="file-name" id="fileName">
+                      No file selected
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">About Me</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    id="aboutMe"
+                    placeholder="Write a short bio about yourself"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Education Tab -->
+            <div id="content-education" class="tab-content">
+              <div id="educationList">
+                <!-- Education items will be added here -->
+              </div>
+
+              <div class="field">
+                <label class="label">School/University</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="schoolName"
+                    placeholder="e.g. Harvard University"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Degree</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="degree"
+                    placeholder="e.g. Bachelor of Science in Computer Science"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Years</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="eduYears"
+                    placeholder="e.g. 2018 - 2022"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    id="eduDescription"
+                    placeholder="Describe your education, achievements, etc."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <button class="button" id="addEducation">
+                    Add Education
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience Tab -->
+            <div id="content-experience" class="tab-content">
+              <div id="experienceList">
+                <!-- Experience items will be added here -->
+              </div>
+
+              <div class="field">
+                <label class="label">Company</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="companyName"
+                    placeholder="e.g. Google"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Position</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="position"
+                    placeholder="e.g. Senior Developer"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Years</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="expYears"
+                    placeholder="e.g. 2022 - Present"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                  <textarea
+                    class="textarea"
+                    id="expDescription"
+                    placeholder="Describe your responsibilities and achievements"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <button class="button" id="addExperience">
+                    Add Experience
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills Tab -->
+            <div id="content-skills" class="tab-content">
+              <div class="field">
+                <label class="label">Your Skills</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="text"
+                    id="skillInput"
+                    placeholder="e.g. JavaScript"
+                  />
+                </div>
+                <p class="help">
+                  Press Enter to add a skill, or use the button below
+                </p>
+              </div>
+
+              <div class="field">
+                <div class="control">
+                  <button class="button" id="addSkill">Add Skill</button>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Current Skills</label>
+                <div class="tags" id="skillsList">
+                  <!-- Skills will be added here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Customize Tab -->
+            <div id="content-customize" class="tab-content">
+              <div class="field">
+                <label class="label">Choose Template</label>
+                <div class="columns is-multiline">
+                  <div class="column is-4">
+                    <div
+                      class="template-option has-background-info"
+                      data-template="modern"
+                    >
+                      <img src="" alt="Modern Template" />
+                    </div>
+                  </div>
+                  <div class="column is-4">
+                    <div
+                      class="template-option has-background-primary"
+                      data-template="classic"
+                    >
+                      <img src="" alt="Classic Template" />
+                    </div>
+                  </div>
+                  <div class="column is-4">
+                    <div
+                      class="template-option has-background-danger"
+                      data-template="minimalist"
+                    >
+                      <img src="" alt="Minimalist Template" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Primary Color</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="color"
+                    id="primaryColor"
+                    value="#3273dc"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Background Color</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="color"
+                    id="backgroundColor"
+                    value="#ffffff"
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="label">Text Color</label>
+                <div class="control">
+                  <input
+                    class="input"
+                    type="color"
+                    id="textColor"
+                    value="#4a4a4a"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <div class="field is-grouped hidden-on-pdf">
+              <div class="control">
+                <button class="button" id="downloadPDF">Download PDF</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Panel -->
+          <div class="column is-12-mobile is-12-tablet is-7-desktop">
+            <div class="box">
+              <h2 class="subtitle">Live Preview</h2>
+              <div class="preview-container" id="previewContainer">
+                <div id="portfolioPreview" class="modern-template">
+                  <!-- Preview content will be rendered here -->
+                  <div
+                    class="profile-section"
+                    style="background-color: #3273dc; color: white"
+                  >
+                    <div class="profile-pic-container">
+                      <img id="profilePreview" src="" alt="Profile Picture" />
+                    </div>
+                    <h1
+                      id="previewName"
+                      class="title is-3"
+                      style="color: white"
+                    >
+                      Your Name
+                    </h1>
+                    <div class="contact-info">
+                      <p id="previewEmail">
+                        <i class="fas fa-envelope"></i> email@example.com
+                      </p>
+                      <p id="previewPhone">
+                        <i class="fas fa-phone"></i> +62 890 456 7890
+                      </p>
+                      <p id="previewAddress">
+                        <i class="fas fa-map-marker-alt"></i> City, Country
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="content-section">
+                    <div class="about-section">
+                      <h3 class="section-title">About Me</h3>
+                      <p id="previewAbout">
+                        Write something about yourself here...
+                      </p>
+                    </div>
+
+                    <div class="education-section">
+                      <h3 class="section-title">Education</h3>
+                      <div id="previewEducation">
+                        <!-- Education entries will be inserted here -->
+                        <p class="has-text-grey">No education added yet.</p>
+                      </div>
+                    </div>
+
+                    <div class="experience-section">
+                      <h3 class="section-title">Experience</h3>
+                      <div id="previewExperience">
+                        <!-- Experience entries will be inserted here -->
+                        <p class="has-text-grey">No experience added yet.</p>
+                      </div>
+                    </div>
+
+                    <div class="skills-section">
+                      <h3 class="section-title">Skills</h3>
+                      <div id="previewSkills">
+                        <!-- Skills will be inserted here -->
+                        <p class="has-text-grey">No skills added yet.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
       .preview-container {
+        border: 1px solid #ddd;
+        min-height: 600px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.is-active {
+        display: block;
+      }
+      .preview-section {
+        padding: 20px;
+      }
+      .profile-pic-container {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      #profilePreview {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #3273dc;
+      }
+      .template-option {
+        cursor: pointer;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s;
+      }
+      .template-option:hover,
+      .template-option.selected {
+        border-color: #3273dc;
+        background-color: #f5f5f5;
+      }
+      .template-option img {
+        width: 100%;
+        height: auto;
+        border-radius: 3px;
+      }
+      /* Template styles */
+      /* Modern template */
+      .modern-template {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .modern-template .profile-section {
+        text-align: center;
+        padding: 30px 0;
+      }
+      .modern-template .content-section {
+        padding: 20px;
+      }
+      .modern-template .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        border-bottom: 2px solid;
+        padding-bottom: 5px;
+      }
+      .modern-template .skill-tag {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 15px;
+        font-size: 0.9rem;
+      }
+
+      /* Classic template */
+      .classic-template {
+        font-family: "Times New Roman", Times, serif;
+      }
+      .classic-template .header {
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid #333;
+      }
+      .classic-template .profile-pic-container {
+        float: right;
+        margin: 0 0 15px 15px;
+      }
+      .classic-template .section-title {
+        font-size: 1.3rem;
+        margin: 20px 0 10px 0;
+        border-bottom: 1px solid #333;
+      }
+      .classic-template .content-section {
+        clear: both;
+      }
+
+      /* Minimalist template */
+      .minimalist-template {
+        font-family: Arial, sans-serif;
+      }
+      .minimalist-template .header {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+      }
+      .minimalist-template .profile-info {
+        margin-left: 20px;
+      }
+      .minimalist-template .section-title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 1rem;
+        margin: 25px 0 15px 0;
+      }
+      .minimalist-template .skill-tag {
+        display: inline-block;
+        margin-right: 10px;
+        font-size: 0.9rem;
+      }
+      #fileUpload {
+        display: none;
+      }
+      .hidden-on-pdf {
+        display: block;
+      }
+      @media print {
+        .hidden-on-pdf {
+          display: none !important;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        .preview-container {
           min-height: 400px;
           padding: 10px;
           overflow-x: hidden;
-      }
-      
-      #portfolioPreview {
+        }
+
+        #portfolioPreview {
           transform: scale(0.8);
           transform-origin: top center;
-      }
-      
-      .modern-template .profile-section,
-      .classic-template .header,
-      .minimalist-template .header {
+        }
+
+        .modern-template .profile-section,
+        .classic-template .header,
+        .minimalist-template .header {
           padding: 15px 0;
-      }
-      
-      #profilePreview {
+        }
+
+        #profilePreview {
           width: 100px;
           height: 100px;
-      }
-      
-      .modern-template .content-section,
-      .classic-template .content-section,
-      .minimalist-template .content-section {
+        }
+
+        .modern-template .content-section,
+        .classic-template .content-section,
+        .minimalist-template .content-section {
           padding: 10px;
-      }
-      
-      .modern-template .section-title,
-      .classic-template .section-title,
-      .minimalist-template .section-title {
+        }
+
+        .modern-template .section-title,
+        .classic-template .section-title,
+        .minimalist-template .section-title {
           font-size: 1.2rem;
-      }
-      
-      .preview-container * {
+        }
+
+        .preview-container * {
           max-width: 100%;
-      }
-      
-      .classic-template .profile-pic-container {
+        }
+
+        .classic-template .profile-pic-container {
           float: none;
           margin: 0 auto 15px auto;
-      }
-      
-      .minimalist-template .header {
+        }
+
+        .minimalist-template .header {
           flex-direction: column;
           text-align: center;
-      }
-      
-      .minimalist-template .profile-info {
+        }
+
+        .minimalist-template .profile-info {
           margin-left: 0;
           margin-top: 10px;
+        }
       }
-  }
-  
-  @media print {
-      #portfolioPreview {
-          transform: none !important;
-      }
-  }
-</style>
 
-  <script src="{{ site.baseurl }}/assets/js/cv_generator.js"></script>
+      @media print {
+        #portfolioPreview {
+          transform: none !important;
+        }
+      }
+    </style>
+
+    <script src="{{ site.baseurl }}/app/javascript/tools/cv_generator.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

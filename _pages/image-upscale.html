@@ -16,8 +16,11 @@ permalink: /tools/image-upscale
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.19.0/tf.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.19.0/tf.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -25,94 +28,118 @@ permalink: /tools/image-upscale
   </head>
 
   <body>
-    
-<section class="section">
-    <div class="container">
-      <h1 class="title has-text-centered">Image Upscaler Tool</h1>
-      
-      <div id="dropArea" class="has-text-centered">
-        <p>Drag & drop an image here or click to upload</p>
-        <p class="is-size-7">Supports JPG, PNG, and GIF</p>
-        <input type="file" id="fileInput" accept="image/*" style="display: none;">
-      </div>
-      
-      <div class="control-panel">
-        <div class="columns">
-          <div class="column">
-            <div class="field">
-              <label class="label">Upscaling Method</label>
-              <div class="control">
-                <div class="select is-fullwidth">
-                  <select id="upscaleMethod">
-                    <option value="canvas">HTML5 Canvas (Nearest Neighbor)</option>
-                    <option value="canvas-bilinear">HTML5 Canvas (Bilinear)</option>
-                    <option value="upscalerjs">Upscaler.js (TensorFlow)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="column">
-            <div class="field">
-              <label class="label">Scale Factor</label>
-              <div class="control">
-                <div class="select is-fullwidth">
-                  <select id="scaleFactor">
-                    <option value="2">2x</option>
-                    <option value="3">3x</option>
-                    <option value="4">4x</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="field">
-          <div class="control">
-            <button id="upscaleBtn" class="button is-link is-fullwidth" disabled>Upscale Image</button>
-          </div>
-        </div>
-        
-        <div id="errorMessage" class="error-message has-text-centered"></div>
-        
-        <div class="progress-container">
-          <progress id="progressBar" class="progress is-link" value="0" max="100"></progress>
-          <p id="progressText" class="has-text-centered">Processing: 0%</p>
-        </div>
-      </div>
-      
-      <div class="preview-container">
-        <div class="preview-box">
-          <h2 class="subtitle has-text-centered">Original Image</h2>
-          <div class="image-container" id="originalImageContainer">
-            <p class="has-text-centered">No image uploaded yet</p>
-          </div>
-          <div class="image-info" id="originalInfo"></div>
-        </div>
-        
-        <div class="preview-box">
-          <h2 class="subtitle has-text-centered">Upscaled Image</h2>
-          <div class="image-container" id="upscaledImageContainer">
-            <p class="has-text-centered">Upscaled image will appear here</p>
-          </div>
-          <div class="image-info" id="upscaledInfo"></div>
-          <div class="has-text-centered" style="margin-top: 10px; display: none;" id="downloadContainer">
-            <a id="downloadLink" class="button is-link">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
-              <span>Download Upscaled Image</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="section">
+      <div class="container">
+        <h1 class="title has-text-centered">Image Upscaler Tool</h1>
 
-  <style>
-                
-    .preview-container {
+        <div id="dropArea" class="has-text-centered">
+          <p>Drag & drop an image here or click to upload</p>
+          <p class="is-size-7">Supports JPG, PNG, and GIF</p>
+          <input
+            type="file"
+            id="fileInput"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+
+        <div class="control-panel">
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label class="label">Upscaling Method</label>
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select id="upscaleMethod">
+                      <option value="canvas">
+                        HTML5 Canvas (Nearest Neighbor)
+                      </option>
+                      <option value="canvas-bilinear">
+                        HTML5 Canvas (Bilinear)
+                      </option>
+                      <option value="upscalerjs">
+                        Upscaler.js (TensorFlow)
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">Scale Factor</label>
+                <div class="control">
+                  <div class="select is-fullwidth">
+                    <select id="scaleFactor">
+                      <option value="2">2x</option>
+                      <option value="3">3x</option>
+                      <option value="4">4x</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="control">
+              <button
+                id="upscaleBtn"
+                class="button is-link is-fullwidth"
+                disabled
+              >
+                Upscale Image
+              </button>
+            </div>
+          </div>
+
+          <div id="errorMessage" class="error-message has-text-centered"></div>
+
+          <div class="progress-container">
+            <progress
+              id="progressBar"
+              class="progress is-link"
+              value="0"
+              max="100"
+            ></progress>
+            <p id="progressText" class="has-text-centered">Processing: 0%</p>
+          </div>
+        </div>
+
+        <div class="preview-container">
+          <div class="preview-box">
+            <h2 class="subtitle has-text-centered">Original Image</h2>
+            <div class="image-container" id="originalImageContainer">
+              <p class="has-text-centered">No image uploaded yet</p>
+            </div>
+            <div class="image-info" id="originalInfo"></div>
+          </div>
+
+          <div class="preview-box">
+            <h2 class="subtitle has-text-centered">Upscaled Image</h2>
+            <div class="image-container" id="upscaledImageContainer">
+              <p class="has-text-centered">Upscaled image will appear here</p>
+            </div>
+            <div class="image-info" id="upscaledInfo"></div>
+            <div
+              class="has-text-centered"
+              style="margin-top: 10px; display: none"
+              id="downloadContainer"
+            >
+              <a id="downloadLink" class="button is-link">
+                <span class="icon">
+                  <i class="fas fa-download"></i>
+                </span>
+                <span>Download Upscaled Image</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .preview-container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -164,16 +191,15 @@ permalink: /tools/image-upscale
         display: none;
         margin-top: 10px;
       }
-  </style>
-  <script src="{{ site.baseurl }}/assets/js/image_upscale.js"></script>
+    </style>
+    <script src="{{ site.baseurl }}/app/javascript/tools/image_upscale.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

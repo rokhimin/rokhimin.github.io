@@ -16,9 +16,15 @@ permalink: /tools/ai-hub
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -26,478 +32,514 @@ permalink: /tools/ai-hub
   </head>
 
   <body>
+    <div class="hero has-background-black-bis is-fullheight">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="has-text-centered mb-4">
+                <h1 class="title has-text-light">
+                  <i class="fas fa-robot mr-2"></i> AI Chat Hub
+                </h1>
+              </div>
 
-<div class="hero has-background-black-bis is-fullheight">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          
-          <div class="has-text-centered mb-4">
-            <h1 class="title has-text-light">
-              <i class="fas fa-robot mr-2"></i> AI Chat Hub
-            </h1>
-          </div>
-          
-          <div class="card has-background-dark">
-            <div class="card-content">
-              
-              <!-- API Selector -->
-              <div class="field mb-4">
-                <label class="label has-text-light">API Provider</label>
-                <div class="control">
-                  <div class="select is-fullwidth">
-                    <select id="api-provider-selector">
-                      <option value="gemini">Google Gemini</option>
-                      <option value="openrouter">OpenRouter</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Model Selector (dynamically populated) -->
-              <div class="field mb-4">
-                <label class="label has-text-light">Model</label>
-                <div class="control">
-                  <div class="select is-fullwidth">
-                    <select id="model-selector"></select>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- API Key -->
-              <div class="field mb-4">
-                <label class="label has-text-light">
-                  API Key <span class="has-text-danger">*</span>
-                </label>
-                <div class="control has-icons-right">
-                  <input class="input" id="api_key" type="password" placeholder="Enter your API key">
-                  <span class="icon is-right is-clickable" id="toggle-visibility">
-                    <i class="fas fa-eye"></i>
-                  </span>
-                </div>
-                <p class="help has-text-grey-light">
-                  <span id="api-key-help">Enter your API key for the selected provider</span>
-                </p>
-              </div>
-              
-              <!-- Chat Container -->
-              <div class="box has-background-black-ter has-text-light mb-4" 
-                   style="max-height: 400px; overflow-y: auto;" 
-                   id="chat-container">
-                <!-- Chat messages will appear here -->
-              </div>
-              
-              <!-- Image Preview -->
-              <div id="image-preview-container" style="display: none; margin-bottom: 10px;">
-                <div class="box has-background-black-ter p-2 has-text-centered" 
-                     style="position: relative;">
-                  <img id="image-preview" style="max-height: 200px; max-width: 100%;">
-                  <button type="button" id="remove-image" 
-                          class="delete is-medium" 
-                          style="position: absolute; top: 5px; right: 5px;"></button>
-                </div>
-              </div>
-              
-              <!-- Input Form -->
-              <form id="form" class="mt-4">
-                <div class="field">
-                  <textarea class="textarea" id="message" placeholder="Type your message here..."></textarea>
-                </div>
-                
-                <div class="field is-grouped">
-                  <div class="control">
-                    <div class="file is-small">
-                      <label class="file-label">
-                        <input class="file-input" type="file" id="image-upload" accept="image/*">
-                        <span class="file-cta">
-                          <span class="file-icon">
-                            <i class="fas fa-image"></i>
-                          </span>
-                          <span class="file-label">
-                            Add Image
-                          </span>
-                        </span>
-                      </label>
+              <div class="card has-background-dark">
+                <div class="card-content">
+                  <!-- API Selector -->
+                  <div class="field mb-4">
+                    <label class="label has-text-light">API Provider</label>
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select id="api-provider-selector">
+                          <option value="gemini">Google Gemini</option>
+                          <option value="openrouter">OpenRouter</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
 
+                  <!-- Model Selector (dynamically populated) -->
+                  <div class="field mb-4">
+                    <label class="label has-text-light">Model</label>
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select id="model-selector"></select>
+                      </div>
+                    </div>
+                  </div>
 
-                  
-                  <div class="control is-expanded has-text-right">
-                    <button type="submit" class="button is-primary">
-                      <span class="icon">
-                        <i class="fas fa-paper-plane"></i>
+                  <!-- API Key -->
+                  <div class="field mb-4">
+                    <label class="label has-text-light">
+                      API Key <span class="has-text-danger">*</span>
+                    </label>
+                    <div class="control has-icons-right">
+                      <input
+                        class="input"
+                        id="api_key"
+                        type="password"
+                        placeholder="Enter your API key"
+                      />
+                      <span
+                        class="icon is-right is-clickable"
+                        id="toggle-visibility"
+                      >
+                        <i class="fas fa-eye"></i>
                       </span>
-                      <span>Send</span>
+                    </div>
+                    <p class="help has-text-grey-light">
+                      <span id="api-key-help"
+                        >Enter your API key for the selected provider</span
+                      >
+                    </p>
+                  </div>
+
+                  <!-- Chat Container -->
+                  <div
+                    class="box has-background-black-ter has-text-light mb-4"
+                    style="max-height: 400px; overflow-y: auto"
+                    id="chat-container"
+                  >
+                    <!-- Chat messages will appear here -->
+                  </div>
+
+                  <!-- Image Preview -->
+                  <div
+                    id="image-preview-container"
+                    style="display: none; margin-bottom: 10px"
+                  >
+                    <div
+                      class="box has-background-black-ter p-2 has-text-centered"
+                      style="position: relative"
+                    >
+                      <img
+                        id="image-preview"
+                        style="max-height: 200px; max-width: 100%"
+                      />
+                      <button
+                        type="button"
+                        id="remove-image"
+                        class="delete is-medium"
+                        style="position: absolute; top: 5px; right: 5px"
+                      ></button>
+                    </div>
+                  </div>
+
+                  <!-- Input Form -->
+                  <form id="form" class="mt-4">
+                    <div class="field">
+                      <textarea
+                        class="textarea"
+                        id="message"
+                        placeholder="Type your message here..."
+                      ></textarea>
+                    </div>
+
+                    <div class="field is-grouped">
+                      <div class="control">
+                        <div class="file is-small">
+                          <label class="file-label">
+                            <input
+                              class="file-input"
+                              type="file"
+                              id="image-upload"
+                              accept="image/*"
+                            />
+                            <span class="file-cta">
+                              <span class="file-icon">
+                                <i class="fas fa-image"></i>
+                              </span>
+                              <span class="file-label"> Add Image </span>
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="control is-expanded has-text-right">
+                        <button type="submit" class="button is-primary">
+                          <span class="icon">
+                            <i class="fas fa-paper-plane"></i>
+                          </span>
+                          <span>Send</span>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Speech to AI Implementation -->
+              <div class="speech-controls card has-background-dark mb-4">
+                <div class="card-content">
+                  <h3 class="title has-text-light is-4">
+                    <i class="fas fa-microphone mr-2"></i> Voice Conversation
+                  </h3>
+
+                  <div class="buttons mb-3">
+                    <button id="startVoiceBtn" class="button is-primary">
+                      <span class="icon"
+                        ><i class="fas fa-microphone"></i
+                      ></span>
+                      <span>Start Voice Chat</span>
+                    </button>
+                    <button id="stopVoiceBtn" class="button is-danger" disabled>
+                      <span class="icon"><i class="fas fa-stop"></i></span>
+                      <span>Stop Voice Chat</span>
                     </button>
                   </div>
+
+                  <div class="voice-status has-text-grey-light mb-3">
+                    <p id="voiceStatus">
+                      Voice chat inactive. Press "Start Voice Chat" to begin.
+                    </p>
+                  </div>
+
+                  <div
+                    class="box has-background-black-ter has-text-light mb-3"
+                    style="min-height: 50px"
+                  >
+                    <p><strong>Your Speech:</strong></p>
+                    <p id="speechTranscript" class="mt-2"></p>
+                  </div>
                 </div>
-              </form>
-              
+              </div>
             </div>
           </div>
-
-          <!-- Speech to AI Implementation -->
-<div class="speech-controls card has-background-dark mb-4">
-  <div class="card-content">
-    <h3 class="title has-text-light is-4">
-      <i class="fas fa-microphone mr-2"></i> Voice Conversation
-    </h3>
-    
-    <div class="buttons mb-3">
-      <button id="startVoiceBtn" class="button is-primary">
-        <span class="icon"><i class="fas fa-microphone"></i></span>
-        <span>Start Voice Chat</span>
-      </button>
-      <button id="stopVoiceBtn" class="button is-danger" disabled>
-        <span class="icon"><i class="fas fa-stop"></i></span>
-        <span>Stop Voice Chat</span>
-      </button>
-    </div>
-    
-    <div class="voice-status has-text-grey-light mb-3">
-      <p id="voiceStatus">Voice chat inactive. Press "Start Voice Chat" to begin.</p>
-    </div>
-    
-    <div class="box has-background-black-ter has-text-light mb-3" style="min-height: 50px;">
-      <p><strong>Your Speech:</strong></p>
-      <p id="speechTranscript" class="mt-2"></p>
-    </div>
-  </div>
-</div>
-          
         </div>
       </div>
     </div>
-  </div>
-</div>
-<style>
-    
-body {
-  background-color: var(--dark-bg);
-  color: var(--text-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    <style>
+      body {
+        background-color: var(--dark-bg);
+        color: var(--text-color);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-.hero {
-  background: linear-gradient(135deg, #1c2128 0%, #0d1117 100%);
-}
+      .hero {
+        background: linear-gradient(135deg, #1c2128 0%, #0d1117 100%);
+      }
 
-.card {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--border-color);
-}
+      .card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        border: 1px solid var(--border-color);
+      }
 
-.input, .textarea {
-  background-color: #0d1117;
-  border-color: var(--border-color);
-  color: var(--text-color);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
+      .input,
+      .textarea {
+        background-color: #0d1117;
+        border-color: var(--border-color);
+        color: var(--text-color);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
 
-.input:focus, .textarea:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 1px var(--primary-color);
-}
+      .input:focus,
+      .textarea:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 1px var(--primary-color);
+      }
 
-.button.is-primary {
-  background-color: var(--primary-color);
-  border: none;
-  transition: all 0.3s ease;
-}
+      .button.is-primary {
+        background-color: var(--primary-color);
+        border: none;
+        transition: all 0.3s ease;
+      }
 
-.button.is-primary:hover {
-  background-color: var(--secondary-color);
-}
+      .button.is-primary:hover {
+        background-color: var(--secondary-color);
+      }
 
-.footer {
-  background-color: var(--card-bg);
-  padding: 1.5rem;
-  border-top: 1px solid var(--border-color);
-}
+      .footer {
+        background-color: var(--card-bg);
+        padding: 1.5rem;
+        border-top: 1px solid var(--border-color);
+      }
 
-/* Chat message styling */
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  max-height: 400px;
-  overflow-y: auto;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: #0d1117;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-}
+      /* Chat message styling */
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        max-height: 400px;
+        overflow-y: auto;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background-color: #0d1117;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
 
-.message {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
-  max-width: 80%;
-  word-wrap: break-word;
-}
+      .message {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        max-width: 80%;
+        word-wrap: break-word;
+      }
 
-.user-message {
-  background-color: var(--primary-color);
-  color: white;
-  align-self: flex-end;
-  margin-left: auto;
-}
+      .user-message {
+        background-color: var(--primary-color);
+        color: white;
+        align-self: flex-end;
+        margin-left: auto;
+      }
 
-.ai-message {
-  background-color: #2d333b;
-  color: var(--text-color);
-  align-self: flex-start;
-}
+      .ai-message {
+        background-color: #2d333b;
+        color: var(--text-color);
+        align-self: flex-start;
+      }
 
-.typing-indicator {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #2d333b;
-  border-radius: 8px;
-}
+      .typing-indicator {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background-color: #2d333b;
+        border-radius: 8px;
+      }
 
-.typing-indicator span {
-  height: 8px;
-  width: 8px;
-  background-color: var(--text-color);
-  display: inline-block;
-  border-radius: 50%;
-  margin-right: 3px;
-  animation: typing 1.5s infinite ease-in-out;
-}
+      .typing-indicator span {
+        height: 8px;
+        width: 8px;
+        background-color: var(--text-color);
+        display: inline-block;
+        border-radius: 50%;
+        margin-right: 3px;
+        animation: typing 1.5s infinite ease-in-out;
+      }
 
-.typing-indicator span:nth-child(2) {
-  animation-delay: 0.2s;
-}
+      .typing-indicator span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
 
-.typing-indicator span:nth-child(3) {
-  animation-delay: 0.4s;
-  margin-right: 0;
-}
+      .typing-indicator span:nth-child(3) {
+        animation-delay: 0.4s;
+        margin-right: 0;
+      }
 
-@keyframes typing {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
+      @keyframes typing {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
 
-::-webkit-scrollbar-track {
-  background: #0d1117;
-  border-radius: 4px;
-}
+      ::-webkit-scrollbar-track {
+        background: #0d1117;
+        border-radius: 4px;
+      }
 
-::-webkit-scrollbar-thumb {
-  background: #30363d;
-  border-radius: 4px;
-}
+      ::-webkit-scrollbar-thumb {
+        background: #30363d;
+        border-radius: 4px;
+      }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #484f58;
-}
+      ::-webkit-scrollbar-thumb:hover {
+        background: #484f58;
+      }
 
-/* Logo and branding */
-.app-logo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      /* Logo and branding */
+      .app-logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-.app-logo i {
-  margin-right: 0.5rem;
-}
+      .app-logo i {
+        margin-right: 0.5rem;
+      }
 
-.api-key-container {
-  position: relative;
-}
+      .api-key-container {
+        position: relative;
+      }
 
-.toggle-visibility {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--text-color);
-  cursor: pointer;
-}
+      .toggle-visibility {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+      }
 
-.message-controls {
-  display: flex;
-  flex-direction: column;
-}
+      .message-controls {
+        display: flex;
+        flex-direction: column;
+      }
 
-.message-input-container {
-  display: flex;
-  width: 100%;
-}
+      .message-input-container {
+        display: flex;
+        width: 100%;
+      }
 
-.message-controls .textarea {
-  flex-grow: 1;
-  resize: none;
-  margin-bottom: 0.5rem;
-}
+      .message-controls .textarea {
+        flex-grow: 1;
+        resize: none;
+        margin-bottom: 0.5rem;
+      }
 
-.message-controls .button {
-  align-self: flex-end;
-  width: auto;
-  height: 2.5rem;
-}
+      .message-controls .button {
+        align-self: flex-end;
+        width: auto;
+        height: 2.5rem;
+      }
 
-.model-selector {
-  margin-bottom: 1rem;
-}
+      .model-selector {
+        margin-bottom: 1rem;
+      }
 
-.model-option {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+      .model-option {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
 
-.model-option.selected {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
+      .model-option.selected {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
 
-/* Image upload styling */
-.image-upload-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
+      /* Image upload styling */
+      .image-upload-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
 
-.image-preview {
-  max-width: 100%;
-  max-height: 200px;
-  margin-top: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-}
+      .image-preview {
+        max-width: 100%;
+        max-height: 200px;
+        margin-top: 0.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+      }
 
-.image-upload-btn {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: #2d333b;
-  color: var(--text-color);
-  border-radius: 4px;
-  cursor: pointer;
-  margin-right: 0.5rem;
-}
+      .image-upload-btn {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background-color: #2d333b;
+        color: var(--text-color);
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 0.5rem;
+      }
 
-.image-upload-btn:hover {
-  background-color: #393f4b;
-}
+      .image-upload-btn:hover {
+        background-color: #393f4b;
+      }
 
-.image-upload-btn i {
-  margin-right: 0.5rem;
-}
+      .image-upload-btn i {
+        margin-right: 0.5rem;
+      }
 
-.image-preview-container {
-  display: none;
-  position: relative;
-  margin-top: 0.5rem;
-}
+      .image-preview-container {
+        display: none;
+        position: relative;
+        margin-top: 0.5rem;
+      }
 
-.remove-image {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
+      .remove-image {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
 
-.user-image {
-  max-width: 100%;
-  max-height: 200px;
-  display: block;
-  margin: 0.5rem 0;
-  border-radius: 8px;
-}
+      .user-image {
+        max-width: 100%;
+        max-height: 200px;
+        display: block;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+      }
 
-.actions-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      .actions-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-.api-selector {
-  margin-bottom: 1rem;
-}
+      .api-selector {
+        margin-bottom: 1rem;
+      }
 
-.model-groups {
-  margin-top: 0.5rem;
-}
+      .model-groups {
+        margin-top: 0.5rem;
+      }
 
-.collapse-indicator {
-  transition: transform 0.3s ease;
-}
+      .collapse-indicator {
+        transition: transform 0.3s ease;
+      }
 
-.collapsed .collapse-indicator {
-  transform: rotate(-90deg);
-}
+      .collapsed .collapse-indicator {
+        transform: rotate(-90deg);
+      }
 
-.model-group-content {
-  padding-left: 1rem;
-  border-left: 1px solid var(--border-color);
-  margin: 0.5rem 0 0.5rem 0.5rem;
-}
+      .model-group-content {
+        padding-left: 1rem;
+        border-left: 1px solid var(--border-color);
+        margin: 0.5rem 0 0.5rem 0.5rem;
+      }
 
-.api-badge {
-  font-size: 0.7rem;
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
-  margin-left: 0.3rem;
-  font-weight: normal;
-}
+      .api-badge {
+        font-size: 0.7rem;
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        margin-left: 0.3rem;
+        font-weight: normal;
+      }
 
-.openrouter-badge {
-  background-color: #5C50E6;
-  color: white;
-}
+      .openrouter-badge {
+        background-color: #5c50e6;
+        color: white;
+      }
 
-.gemini-badge {
-  background-color: #1DB954;
-  color: white;
-}
-</style>
-  <script src="{{ site.baseurl }}/assets/js/ai_hub.js"></script>
+      .gemini-badge {
+        background-color: #1db954;
+        color: white;
+      }
+    </style>
+    <script src="{{ site.baseurl }}/app/javascript/tools/ai_hub.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

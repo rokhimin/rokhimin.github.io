@@ -7,161 +7,34 @@ layout: default
     My Tools
   </h1>
   <p class="text-gray-600 dark:text-gray-300 mx-auto max-w-2xl">
-    Tool - tool yang saya buat diatas jekyll dan hanya berjalan di client-side saja.
+    Tool-tool yang saya buat di atas Jekyll dan hanya berjalan di client-side.
   </p>
 </div>
 
-<div class="grid grid-cols-5 grid-rows-5 gap-4 h-screen items-center justify-center">
-  
-  <a href="{{ '/tools/totp' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Gauth TOTP
-          </h3>
-        </div>
-    </div>
-  </a>
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4"
+>
+  {% assign tools = "totp:Gauth TOTP, to-do-list:To Do List App,
+  image-upscale:Image Upscaler Tool, image-enhancer:Image Enhancer Tool,
+  bg-remove:Background Removal Tool, cv-generator:CV / Resume Generator,
+  discord-webhook:Discord Webhook Sender, strikethrough:Strikethrough Text
+  Generator, anime-trace:Anime Trace Tool, ai-hub:AI Chat Hub, rest-soap:API
+  REST/SOAP Tester, lorem-ipsum:Lorem Ipsum Generator, nik-parse:Indonesian NIK
+  Parser, ig-comparator:Instagram Comparator, mbti:MBTI Personality Test" |
+  split: "," %} {% for tool in tools %} {% assign parts = tool | strip | split:
+  ":" %} {% assign slug = parts[0] %} {% assign name = parts[1] %}
 
-  <a href="{{ '/tools/to-do-list' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              To Do List App
-          </h3>
-        </div>
+  <a
+    href="{{ '/tools/' | append: slug | relative_url }}"
+    class="transition hover:scale-[1.02] hover:shadow-xl duration-200"
+  >
+    <div
+      class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 h-full flex items-center justify-center text-center"
+    >
+      <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
+        {{ name }}
+      </h3>
     </div>
   </a>
-  
-  <a href="{{ '/tools/image-upscale' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Image Upscaler Tool
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/image-enhancer' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Image Enhancer Tool
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/bg-remove' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Background Removal Tool
-          </h3>
-        </div>
-    </div>
-  </a>
-
-  <a href="{{ '/tools/cv-generator' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              CV / Resume Generator
-          </h3>
-        </div>
-    </div>
-  </a>
-
-  <a href="{{ '/tools/discord-webhook' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Discord Webhook Sender
-          </h3>
-        </div>
-    </div>
-  </a>
-
-  <a href="{{ '/tools/strikethrough' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Strikethrough Text Generator
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/anime-trace' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Anime Trace Tool
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/ai-hub' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              AI Chat hub
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/rest-soap' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              API REST/SOAP Tester
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/lorem-ipsum' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Lorem Ipsum Generator
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/nik-parse' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Indonesian Number Identity (NIK) Parser
-          </h3>
-        </div>
-    </div>
-  </a>
-  
-  <a href="{{ '/tools/ig-comparator' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              Instagram Comparator
-          </h3>
-        </div>
-    </div>
-  </a>
-
-  <a href="{{ '/tools/mbti' | relative_url }}" class="hover:text-primary transition-colors">     
-    <div class="row-span-5 col-start-3 mb-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col justify-center items-center">
-    <div class="p-4">
-          <h3 class="text-2xl font-bold text-gray-800 dark:text-white text-center">
-              MBTI Personality Test
-          </h3>
-        </div>
-    </div>
-  </a>
-
-  
+  {% endfor %}
 </div>

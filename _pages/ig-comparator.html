@@ -16,7 +16,10 @@ permalink: /tools/ig-comparator
       name="description"
       content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}"
     />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/1.0.2/css/bulma.css"
+    />
     <link
       rel="canonical"
       href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}"
@@ -24,54 +27,88 @@ permalink: /tools/ig-comparator
   </head>
 
   <body>
-
-<div class="columns is-centered">
-    <div class="column is-half">
+    <div class="columns is-centered">
+      <div class="column is-half">
         <div class="box">
-        <h3 class="title has-text-white">Instagram Following/Followers Comparator</h3>
-        <div class="box">
+          <h3 class="title has-text-white">
+            Instagram Following/Followers Comparator
+          </h3>
+          <div class="box">
             <label class="label">Upload Following HTML</label>
-            <input type="file" id="followingFile" class="input">
-        </div>
-        <div class="box">
+            <input type="file" id="followingFile" class="input" />
+          </div>
+          <div class="box">
             <label class="label">Upload Followers HTML</label>
-            <input type="file" id="followersFile" class="input">
-        </div>
-        <div class="field">
-            <button class="button is-link" onclick="compareLists()">Compare</button>
-        </div>
-        <div class="box">
+            <input type="file" id="followersFile" class="input" />
+          </div>
+          <div class="field">
+            <button class="button is-link" onclick="compareLists()">
+              Compare
+            </button>
+          </div>
+          <div class="box">
             <h2 class="subtitle has-text-white">Not Following You Back</h2>
             <textarea id="notFollowingBack" readonly></textarea>
-            <button class="button is-light copy-btn" onclick="copyToClipboard('notFollowingBack')">Copy</button>
-            <button class="button is-light copy-btn" onclick="downloadText('notFollowingBack', 'not_following_back.txt')">Download</button>
-        </div>
-        <div class="box">
+            <button
+              class="button is-light copy-btn"
+              onclick="copyToClipboard('notFollowingBack')"
+            >
+              Copy
+            </button>
+            <button
+              class="button is-light copy-btn"
+              onclick="downloadText('notFollowingBack', 'not_following_back.txt')"
+            >
+              Download
+            </button>
+          </div>
+          <div class="box">
             <h2 class="subtitle has-text-white">You Don't Follow Back</h2>
             <textarea id="notFollowedBack" readonly></textarea>
-            <button class="button is-light copy-btn" onclick="copyToClipboard('notFollowedBack')">Copy</button>
-            <button class="button is-light copy-btn" onclick="downloadText('notFollowedBack', 'not_followed_back.txt')">Download</button>
+            <button
+              class="button is-light copy-btn"
+              onclick="copyToClipboard('notFollowedBack')"
+            >
+              Copy
+            </button>
+            <button
+              class="button is-light copy-btn"
+              onclick="downloadText('notFollowedBack', 'not_followed_back.txt')"
+            >
+              Download
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-<style>
-  
-            body { background-color: #121212; color: #ffffff; }
-            .container { max-width: 800px; margin: 50px auto; }
-            textarea { width: 100%; height: 150px; }
-            .box { background-color: #1e1e1e; }
-            .copy-btn { margin-top: 10px; }
-</style>
-  <script src="{{ site.baseurl }}/assets/js/ig_comparator.js"></script>
+    <style>
+      body {
+        background-color: #121212;
+        color: #ffffff;
+      }
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+      }
+      textarea {
+        width: 100%;
+        height: 150px;
+      }
+      .box {
+        background-color: #1e1e1e;
+      }
+      .copy-btn {
+        margin-top: 10px;
+      }
+    </style>
+    <script src="{{ site.baseurl }}/app/javascript/tools/ig_comparator.js"></script>
 
     <footer class="footer has-background-black-bis">
-        <div class="content has-text-centered">
-            <a href="{{ site.baseurl }}/" class="has-text-white">
-                <strong>[Home]</strong>
-            </a>
-        </div>
+      <div class="content has-text-centered">
+        <a href="{{ site.baseurl }}/" class="has-text-white">
+          <strong>[Home]</strong>
+        </a>
+      </div>
     </footer>
-  
-</body>
+  </body>
 </html>

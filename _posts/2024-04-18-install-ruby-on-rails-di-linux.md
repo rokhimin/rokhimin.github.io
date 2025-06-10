@@ -3,7 +3,7 @@ layout: post
 title: Install Ruby on Rails di Linux Ubuntu
 date: 2024-04-18
 author: whdzera
-thumbnail: assets/img/ror.png
+thumbnail: app/assets/images/ror.png
 comments: true
 ---
 
