@@ -3,7 +3,6 @@ layout: post
 title: Tutorial Memakai Kaminari di Ruby on Rails
 date: 2025-03-06
 author: whdzera
-thumbnail: app/assets/images/kaminari.png
 comments: true
 ---
 ### Apa Itu Kaminari?

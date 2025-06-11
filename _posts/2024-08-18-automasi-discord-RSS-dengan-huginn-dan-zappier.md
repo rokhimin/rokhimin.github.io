@@ -3,7 +3,6 @@ layout: post
 title: Automasi Discord + RSS dengan Huginn dan Zappier
 date: 2024-08-12
 author: whdzera
-thumbnail: app/assets/images/dc-rss.png
 comments: true
 ---
 
