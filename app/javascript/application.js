@@ -10,3 +10,5 @@ import MessageController from "./controllers/message_controller.js";
 Stimulus.register("message", MessageController);
 import ThumbnailController from "./controllers/thumbnail_controller.js";
 Stimulus.register("thumbnail", ThumbnailController);
+import LoadingController from "./controllers/loading_controller.js"
+Stimulus.register("loading", LoadingController);
