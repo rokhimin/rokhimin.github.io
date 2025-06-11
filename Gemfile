@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.4.1"
-gem "tear-jekyll-theme", "~> 1.1.0"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
+  gem "jekyll-sitemap", "~> 1.4"
 end
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do

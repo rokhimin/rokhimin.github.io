@@ -20,6 +20,7 @@ permalink: /blog/:title
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 
 include:
   - _pages
