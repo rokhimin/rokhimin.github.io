@@ -12,3 +12,5 @@ import ThumbnailController from "./controllers/thumbnail_controller.js";
 Stimulus.register("thumbnail", ThumbnailController);
 import LoadingController from "./controllers/loading_controller.js";
 Stimulus.register("loading", LoadingController);
+import CopyController from "./controllers/copy_controller.js";
+Stimulus.register("copy", CopyController);
