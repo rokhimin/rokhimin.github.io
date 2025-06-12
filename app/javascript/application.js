@@ -14,3 +14,5 @@ import LoadingController from "./controllers/loading_controller.js";
 Stimulus.register("loading", LoadingController);
 import CopyController from "./controllers/copy_controller.js";
 Stimulus.register("copy", CopyController);
+import TypewriterController from "./controllers/typewriter_controller.js";
+Stimulus.register("typewriter", TypewriterController);
