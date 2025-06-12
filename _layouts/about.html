@@ -10,15 +10,210 @@ layout: default
   >
     A<span data-typewriter-target="text"></span>
   </h1>
+  <p class="text-gray-600 dark:text-gray-300 mx-auto max-w-2xl">
+    halaman ini berisi informasi tentang saya, pengalaman, dan minat saya.
+  </p>
 </div>
+
 <div
-  class="relative md:mr-25 md:ml-25 bg-white dark:bg-gray-800 rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
+  class="relative md:mx-24 bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden mb-6"
 >
   <article class="max-w-4xl mx-auto px-4 sm:px-6 py-4">
-    <div
-      class="prose dark:prose-invert prose-lg max-w-none text-gray-700 dark:text-gray-200"
-    >
-      {{ content }}
+    <div class="max-w-none text-gray-700 dark:text-gray-200">
+      <div class="p-6 md:p-8 flex flex-col sm:flex-row gap-6 sm:items-start">
+        <!-- Profile Image -->
+        <div class="flex-shrink-0">
+          <img
+            src="/app/assets/images/my.png"
+            alt="whdzera"
+            class="w-32 h-32 rounded-full shadow-md object-cover"
+          />
+        </div>
+
+        <!-- Text Content -->
+        <div class="text-gray-800 dark:text-gray-200 flex-1">
+          <h2 class="text-2xl font-bold mb-2">
+            Hi, Saya <span class="text-primary">whdzera</span> 👋
+          </h2>
+          <p class="mb-4 leading-relaxed">
+            Saya seorang programmer berusia 19 tahun yang penuh semangat dalam
+            mempelajari teknologi, terutama di dunia web programming. Saya suka
+            membangun hal-hal baru dan bekerja sama dengan orang lain karena
+            proyek hebat tak dibangun sendirian.
+          </p>
+          <p class="mb-4 leading-relaxed">
+            Filosofi saya adalah: <em>komunikasi</em> dan
+            <em>kolaborasi</em> adalah kunci. Bahasa pemrograman hanyalah
+            alat—gunakan yang paling tepat untuk pekerjaan yang sesuai. Saya
+            terus belajar dan menganggap diri saya sudah berada pada tingkat
+            lanjutan.
+          </p>
+
+          <div>
+            <h2 class="text-2xl font-bold mb-2">Menulis</h2>
+            <p class="leading-relaxed">
+              Saya tidak terlalu sering menulis, tapi kamu bisa menjelajahi
+              berbagai tulisan publik saya. Sebagian besar berisi pengalaman
+              pribadi saya dalam dunia teknologi, serta sesekali saya bagikan
+              tips ringan dan ramah untuk pemula.
+            </p>
+            <a
+              href="/blog"
+              class="inline-block mt-2 text-primary hover:underline font-medium"
+              >Kunjungi Blog Saya</a
+            >
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold mt-4 mb-2">
+              Bangun Project Open Source
+            </h2>
+            <p class="leading-relaxed">
+              Saya senang membagikan proyek-proyek yang saya kerjakan secara
+              publik—entah untuk belajar hal baru, atau eksplorasi teknologi.
+            </p>
+            <p class="mt-2 leading-relaxed">
+              Saya aktif dalam berbagai komunitas dan proyek open source. Dengan
+              pengalaman lebih dari beberapa tahun dalam dunia pengembangan web.
+            </p>
+            <a
+              href="https://github.com/whdzera"
+              class="inline-block mt-2 text-primary hover:underline font-medium"
+              target="_blank"
+              rel="noopener"
+              >Lihat Source Code Saya di GitHub</a
+            >
+          </div>
+
+          <h3 class="text-2xl font-semibold mt-6 mb-2">Technology Interest</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Ruby -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg"
+                alt="Ruby"
+                class="w-6 h-6"
+              />
+              <span>Ruby</span>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JavaScript"
+                class="w-6 h-6"
+              />
+              <span>JavaScript</span>
+            </div>
+
+            <!-- Ruby on Rails -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg"
+                alt="Rails"
+                class="w-6 h-6"
+              />
+              <span>Ruby on Rails</span>
+            </div>
+
+            <!-- Sinatra (fallback text or placeholder) -->
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-6 h-6 bg-pink-500 text-white flex items-center justify-center text-xs font-bold rounded-full"
+              >
+                S
+              </div>
+              <span>Sinatra</span>
+            </div>
+
+            <!-- Hanami (custom SVG or fallback circle) -->
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-6 h-6 bg-red-400 text-white flex items-center justify-center text-xs font-bold rounded-full"
+              >
+                H
+              </div>
+              <span>Hanami</span>
+            </div>
+
+            <!-- Stimulus -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://raw.githubusercontent.com/hotwired/stimulus/main/assets/logo.svg"
+                alt="Stimulus.js"
+                class="w-6 h-6"
+              />
+              <span>Stimulus.js</span>
+            </div>
+
+            <!-- Bulma -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bulma/bulma-plain.svg"
+                alt="Bulma"
+                class="w-6 h-6"
+              />
+              <span>Bulma</span>
+            </div>
+
+            <!-- Tailwind -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+                alt="Tailwind CSS"
+                class="w-6 h-6"
+              />
+              <span>Tailwind CSS</span>
+            </div>
+
+            <!-- GitHub -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                alt="GitHub"
+                class="w-6 h-6"
+              />
+              <span>GitHub</span>
+            </div>
+
+            <!-- GitLab -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg"
+                alt="GitLab"
+                class="w-6 h-6"
+              />
+              <span>GitLab</span>
+            </div>
+
+            <!-- Docker -->
+            <div class="flex items-center space-x-3">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                alt="Docker"
+                class="w-6 h-6"
+              />
+              <span>Docker</span>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold mt-4 mb-2">
+              Looking for Collaboration?
+            </h2>
+            <p class="leading-relaxed">
+              Saya terbuka untuk proyek freelance atau kolaborasi profesional.
+              Silakan hubungi saya melalui email:
+              <a
+                href="mailto:whdzera@gmail.com"
+                class="text-primary hover:underline"
+                >whdzera@gmail.com</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </article>
 </div>
