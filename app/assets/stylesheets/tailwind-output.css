@@ -1594,6 +1594,15 @@
       --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
     }
   }
+  .dark\:hover\:bg-gray-400 {
+    &:where(.dark, .dark *) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-gray-400);
+        }
+      }
+    }
+  }
   .dark\:hover\:bg-gray-600 {
     &:where(.dark, .dark *) {
       &:hover {
@@ -1608,6 +1617,15 @@
       &:hover {
         @media (hover: hover) {
           background-color: var(--color-gray-700);
+        }
+      }
+    }
+  }
+  .dark\:hover\:bg-gray-900 {
+    &:where(.dark, .dark *) {
+      &:hover {
+        @media (hover: hover) {
+          background-color: var(--color-gray-900);
         }
       }
     }

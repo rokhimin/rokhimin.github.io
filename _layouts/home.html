@@ -24,7 +24,9 @@ layout: default
   {% for post in year.items %}
   <!-- Post Card -->
   <a href="{{ post.url | relative_url }}">
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+    <div
+      class="bg-white hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-600 rounded-lg shadow-lg overflow-hidden"
+    >
       <!-- Post Content -->
       <div class="p-4">
         <h3
