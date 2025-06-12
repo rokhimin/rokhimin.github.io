@@ -1,5 +1,5 @@
-import { Controller } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js";
-import { BProgress } from "https://unpkg.com/@bprogress/core/dist/index.js";
+import { Controller } from "@hotwired/stimulus";
+import { BProgress } from "@bprogress/core";
 
 export default class LoadingController extends Controller {
   connect() {

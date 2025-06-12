@@ -23,17 +23,16 @@
     rel="stylesheet"
     href="{{ site.baseurl }}/app/assets/stylesheets/tailwind-output.css"
   />
+  {% if jekyll.environment == "development" %}
+  <script type="module" src="http://localhost:5173/application.js"></script>
+  {% else %}
   <script
     type="module"
-    src="{{ site.baseurl }}/app/javascript/application.js"
+    src="{{ site.baseurl }}/app/build/application.js"
   ></script>
+  {% endif %}
   <link
     rel="stylesheet"
-    type="text/css"
-    href="https://unpkg.com/@bprogress/core/dist/index.css"
-  />
-  <link
-    rel="stylesheet"
-    href="{{ site.baseurl }}/app/assets/stylesheets/main.css"
+    href="{{ site.baseurl }}/app/assets/stylesheets/bprogress.css"
   />
 </head>

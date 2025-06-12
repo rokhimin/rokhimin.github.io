@@ -1,9 +1,0 @@
-:root {
-  --bprogress-color: #83111b;
-  --bprogress-height: 4px;
-  --bprogress-box-shadow: 0 0 10px var(--bprogress-color),
-    0 0 5px var(--bprogress-color);
-}
-.dark {
-  --bprogress-color: #1648b6;
-}

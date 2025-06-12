@@ -1,4 +1,4 @@
-import { Application } from "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js";
+import { Application } from "@hotwired/stimulus";
 
 window.Stimulus = Application.start();
 
@@ -10,5 +10,5 @@ import MessageController from "./controllers/message_controller.js";
 Stimulus.register("message", MessageController);
 import ThumbnailController from "./controllers/thumbnail_controller.js";
 Stimulus.register("thumbnail", ThumbnailController);
-import LoadingController from "./controllers/loading_controller.js"
+import LoadingController from "./controllers/loading_controller.js";
 Stimulus.register("loading", LoadingController);
