@@ -24,3 +24,12 @@ plugins:
 
 include:
   - _pages
+
+exclude:
+  - spec
+  - CNAME
+  - package.json
+  - package-lock.json
+  - vite.config.js
+  - Rakefile
+  - README.md
