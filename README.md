@@ -5,6 +5,3 @@
 Use base theme Tear with many modification
 
 https://github.com/whdzera/jekyll-tear
-
-## Tech Stack
-- Jekyll, Stimulus, Tailwind
