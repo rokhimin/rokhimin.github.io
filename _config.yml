@@ -14,7 +14,7 @@ youtube_username: whdzera
 logo: whdzera
 permalink: "/:title.html"
 footer: "Created with ❤ by whdzera"
-disqus: "rokhimin.disqus"
+disqus: "whdzera.disqus"
 
 permalink: /blog/:title
 

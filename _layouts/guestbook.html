@@ -3,9 +3,17 @@ layout: default
 ---
 
 <div class="text-center mb-12">
-  <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-4">
-    Guest Book
+  <h1
+    class="text-4xl font-bold text-gray-800 dark:text-white mb-4"
+    data-controller="typewriter"
+    data-typewriter-words-value='["Book"]'
+  >
+    Guest <span data-typewriter-target="text"></span>
   </h1>
+  <p class="text-gray-600 dark:text-gray-300 mx-auto max-w-2xl">
+    tempat untuk mengisi pesan, kritik, saran, atau apapun yang ingin kamu
+    sampaikan.
+  </p>
 </div>
 <div
   class="relative md:mr-25 md:ml-25 bg-white dark:bg-black rounded-l-lg rounded-r-lg shadow-lg overflow-hidden mb-6"
